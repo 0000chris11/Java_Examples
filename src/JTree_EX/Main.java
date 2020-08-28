@@ -5,13 +5,19 @@
  */
 package JTree_EX;
 
+import AAMethods.MM;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.util.Locale;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
+import javax.swing.JScrollPane;
+import javax.swing.tree.TreeModel;
 
 /**
  *
@@ -20,14 +26,14 @@ import javax.swing.tree.TreeSelectionModel;
 public class Main {
 
       JFrame JF = new JFrame();
-      JTree JTE;
+      
+      static JTree JTE;
 
       private DefaultMutableTreeNode getDefaultMutableTreeNode() {
 
             DefaultMutableTreeNode root = new DefaultMutableTreeNode(
                     "Best Characters");
-            
-            
+
             root.add(new DefaultMutableTreeNode("Males"));
             ((DefaultMutableTreeNode) root.getChildAt(0)).add(
                     new DefaultMutableTreeNode("MOM"));
@@ -35,7 +41,7 @@ public class Main {
                     new DefaultMutableTreeNode("Kurapika"));
             ((DefaultMutableTreeNode) root.getChildAt(0)).add(
                     new DefaultMutableTreeNode("Solid Snake"));
-            
+
             root.add(new DefaultMutableTreeNode("Females"));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
                     new DefaultMutableTreeNode("Usagi Tsukino"));
@@ -43,30 +49,54 @@ public class Main {
                     new DefaultMutableTreeNode("Pinkie Pie"));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
                     new DefaultMutableTreeNode("Inaho Misora"));
-             
+
+            root.add(new DefaultMutableTreeNode(new JCheckBox("beeeee")));
+            
             return root;
       }
+      
+      private void setBackgroundToNodes(){
+            //CELLRENDERER NEEDED!!!!!!!!!!!!!!!!!!!
+            TreeModel tm = JTE.getModel();
+            Object o = tm.getRoot();
+            for(int a = 0; a < tm.getChildCount(o); a++){
+                  //((DefaultMutableTreeNode) tm.getChild(o, a));
+            }
+      }
 
-      public Main() {
+      private void frameConfig(){
             JF.setDefaultCloseOperation(3);
             JF.setLayout(null);
             JF.getContentPane().setBackground(Color.LIGHT_GRAY);
             JF.setLocationRelativeTo(null);
-
+            JF.setSize(471, 644);
+      }
+      
+      private void treeConfig(){
             JTE = new JTree(getDefaultMutableTreeNode());
-            JF.add(JTE);
-            JTE.setBounds(4, 4, 150, 200);
-            JTE.getSelectionModel().setSelectionMode
-            (TreeSelectionModel.SINGLE_TREE_SELECTION);
-            JTE.addTreeSelectionListener(new TreeSelectionListener(){
-                  @Override
-                  public void valueChanged(TreeSelectionEvent e) {
-                        
-                  }
-                  
-            });
-
-            JF.setSize(171, 244);
+            JScrollPane sc_JTE = new JScrollPane(JTE);
+            
+            JF.add(sc_JTE);
+            JTE.setLocation(0, 0);
+            MM.setComponentToCenterJFrame(sc_JTE, JF);
+            
+            JTE.setRootVisible(false);
+            JTE.setShowsRootHandles(true);
+            JTE.putClientProperty("JTree.lineStyle", "Horizontal");
+            //JTE.setPreferredSize(new Dimension(196, 396));
+            JTE.setBackground(Color.DARK_GRAY);
+            JTE.setSize(400, 800);
+            JTE.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+            JTE.addTreeSelectionListener(new JTE_SL());
+            System.out.println("SC_JTE BOUNDS: " + sc_JTE.getBounds());
+            System.out.println("JTE BOUNDS: " + JTE.getBounds());
+      }
+      
+      public Main() {
+            frameConfig();
+            //++++++++++++++++++++++++++++++++++++++++++++++
+            treeConfig();
+            //++++++++++++++++++++++++++++++++++++++++++++++
             JF.setVisible(true);
       }
 
