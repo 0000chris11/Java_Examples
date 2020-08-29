@@ -60,6 +60,7 @@ public class Main {
             TreeModel tm = JTE.getModel();
             Object o = tm.getRoot();
             for(int a = 0; a < tm.getChildCount(o); a++){
+                  
                   //((DefaultMutableTreeNode) tm.getChild(o, a));
             }
       }
@@ -82,12 +83,16 @@ public class Main {
             
             JTE.setRootVisible(false);
             JTE.setShowsRootHandles(true);
+            JTE.setRowHeight(26);
+
             JTE.putClientProperty("JTree.lineStyle", "Horizontal");
-            //JTE.setPreferredSize(new Dimension(196, 396));
+            //JTE.putClientProperty("JTree.lineStyle", "None");
+            
             JTE.setBackground(Color.DARK_GRAY);
             JTE.setSize(400, 800);
             JTE.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
             JTE.addTreeSelectionListener(new JTE_SL());
+            JTE.setCellRenderer(new JTE_CellRenderer());
             System.out.println("SC_JTE BOUNDS: " + sc_JTE.getBounds());
             System.out.println("JTE BOUNDS: " + JTE.getBounds());
       }
