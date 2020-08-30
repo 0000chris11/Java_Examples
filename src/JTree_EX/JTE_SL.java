@@ -45,6 +45,7 @@ public class JTE_SL implements TreeSelectionListener {
 
             }
             //+++++++++++++++++++++++++++++++++++++++
+            /*
             new Thread() {
                   public void run() {
                         try {
@@ -55,6 +56,7 @@ public class JTE_SL implements TreeSelectionListener {
                         }
                   }
             }.start();
+            */
       }
 
 }

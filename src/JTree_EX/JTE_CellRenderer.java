@@ -15,26 +15,31 @@ import javax.swing.tree.DefaultTreeCellRenderer;
  *
  * @author Christopher
  */
-public class JTE_CellRenderer extends DefaultTreeCellRenderer{
-      
+public class JTE_CellRenderer extends DefaultTreeCellRenderer {
+
       @Override
-      public Component getTreeCellRendererComponent(JTree tree, Object value, 
-              boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus){
-            
+      public Component getTreeCellRendererComponent(JTree tree, Object value,
+              boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+
             super.getTreeCellRendererComponent(
-                        tree, value, sel,
-                        expanded, leaf, row,
-                        hasFocus);
-            
-            this.setOpaque(true);
-            this.setForeground(Color.WHITE);
-            
+                    tree, value, sel,
+                    expanded, leaf, row,
+                    hasFocus);
+
+            //if (sel == false) {
+            //     this.setOpaque(true);
+            //} 
+            //this.setForeground(Color.WHITE);
             return this;
       }
-      
-      public JTE_CellRenderer(){
+
+      public JTE_CellRenderer() {
             ImageIcon icon = new ImageIcon("C:\\C0F\\Image\\X Icons\\+ small.png");
             this.setLeafIcon(icon);
             
+            this.setBackgroundNonSelectionColor(new Color(0,0,0,0));
+            this.setBackgroundSelectionColor(Color.CYAN);
+            this.setTextNonSelectionColor(Color.WHITE);
+            this.setTextSelectionColor(Color.BLACK);
       }
 }
