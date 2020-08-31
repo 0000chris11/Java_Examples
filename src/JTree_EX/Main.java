@@ -50,7 +50,7 @@ public class Main {
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
                     new DefaultMutableTreeNode("Inaho Misora"));
 
-            root.add(new DefaultMutableTreeNode(new JCheckBox("beeeee")));
+            //root.add(new DefaultMutableTreeNode(new JCheckBox("beeeee")));
             
             return root;
       }
@@ -67,6 +67,7 @@ public class Main {
 
       private void frameConfig(){
             JF.setDefaultCloseOperation(3);
+            JF.setAlwaysOnTop(true);
             JF.setLayout(null);
             JF.getContentPane().setBackground(Color.LIGHT_GRAY);
             JF.setLocationRelativeTo(null);
@@ -81,6 +82,7 @@ public class Main {
             JTE.setLocation(0, 0);
             MM.setComponentToCenterJFrame(sc_JTE, JF);
             
+            JTE.setEditable(false);
             JTE.setRootVisible(false);
             JTE.setShowsRootHandles(true);
             JTE.setRowHeight(26);

@@ -32,7 +32,7 @@ public class MM {
             //System.out.println("JP Bounds: " + jc.getBounds());
       }
 
-      //++++++++++++++++++++++++++++++++++++++++++
+      //DELETE+LATER+++++++++++++++++++++++++++++++++++++++++
       public static ImageIcon resizeIcon(ImageIcon ii, int imageType) {
             //+++++++++++++++++++++++++++++++++++++++++++++++++
             BufferedImage bimage = new BufferedImage(225, 225, imageType);
@@ -49,7 +49,7 @@ public class MM {
             return icon2;
             //++++++++++++++++++++++++++++++++++++++++++++++++++
       }
-
+      //++++++++++++++++++++++++++++++++++++++++++
       public static BufferedImage changeImageColorOfOneColor(File F, Color C) {
             BufferedImage bimage = null;
             try {
@@ -82,7 +82,9 @@ public class MM {
                     RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
             g2.drawImage(new ImageIcon(F.toString()).getImage(), 
-                    0, 0, 225, 225, null);
+                    0, 0, x, y, null);
+            
+            
             
             return bimage;
       }

@@ -22,7 +22,7 @@ public class JTE_SL implements TreeSelectionListener {
             //System.out.println("Path Component 0: " 
             //       + e.getPath().getPathComponent(0));
             if (e.getPath().getPathComponent(0).toString().equals("Best Characters")) {
-                  System.out.println("\tINSIDE ROOT");
+                  //System.out.println("\tINSIDE ROOT");
                   //System.out.println("\tgetLastSelectedPathComponent: "
                   //+ JTE.getLastSelectedPathComponent());
                   //+++++++++++++++++++++++++++++++++++++++++++++
@@ -31,16 +31,16 @@ public class JTE_SL implements TreeSelectionListener {
 
                   if (node != null) {
                         if (node.toString().equals("Pinkie Pie")) {
-                              System.out.println("\t\tPinkePie <- Selected");
+                              //System.out.println("\t\tPinkePie <- Selected");
                         }
 
                         if (node.isLeaf()) {
-                              System.out.println("\t\t\tTYPE: LEAF");
+                              //System.out.println("\t\t\tTYPE: LEAF");
                         } else {
-                              System.out.println("\t\t\tTYPE: NOT LEAF");
+                              //System.out.println("\t\t\tTYPE: NOT LEAF");
                         }
                   } else {
-                        System.out.println("\t\tNOTHING IS Selected");
+                        //System.out.println("\t\tNOTHING IS Selected");
                   }
 
             }
