@@ -21,7 +21,7 @@ public class PanelG extends JPanel {
 
       @Override
       public void paintComponent(Graphics g) {
-            System.out.println(">>>>>paintComponents");
+            //System.out.println(">>>>>paintComponents");
             Graphics2D g2 = (Graphics2D) g;
             g2.setPaint(
                     new GradientPaint(

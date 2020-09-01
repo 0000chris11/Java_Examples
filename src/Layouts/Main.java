@@ -37,7 +37,7 @@ public class Main {
                   d+= 302;
                   sX += JPS[a].getWidth();
                   for(int b = 0; b < JBTNS.length; b++){
-                        System.out.println(JPS[a].getName() + ": " + JBTNS[b].getName());
+                        //System.out.println(JPS[a].getName() + ": " + JBTNS[b].getName());
                         setName(JBTNS[b], ("BTN_" + (b + 1)));
                         JPS[a].add(JBTNS[b]);
                         JBTNS[b].setLocation(4, bs);
@@ -46,15 +46,16 @@ public class Main {
                   }
             }
             //+++++++++++++++++++++++
-            
-            
             JF.setSize(sX + 24, JPS[0].getHeight() + 44);
+            JF.setVisible(true);
       }
+      
       public void setName(JComponent jc, String name){
             jc.setName(name);
       }
+      
       public static void main(String[] args){
-            new Main().JF.setVisible(true);
-            new Second().JF.setVisible(true);
+            new Main();
+            new Second();
       }
 }

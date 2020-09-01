@@ -95,8 +95,6 @@ public class Main {
             JTE.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
             JTE.addTreeSelectionListener(new JTE_SL());
             JTE.setCellRenderer(new JTE_CellRenderer());
-            System.out.println("SC_JTE BOUNDS: " + sc_JTE.getBounds());
-            System.out.println("JTE BOUNDS: " + JTE.getBounds());
       }
       
       public Main() {

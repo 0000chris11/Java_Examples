@@ -70,6 +70,7 @@ public class Second {
 
             JF.pack();
             JF.setSize(JF.getWidth() + 60, JF.getHeight());
+            JF.setVisible(true);
       }
 
       private class BTNSActionCP implements ActionListener {
