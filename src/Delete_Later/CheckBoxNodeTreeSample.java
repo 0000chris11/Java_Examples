@@ -43,11 +43,10 @@ public class CheckBoxNodeTreeSample {
          try {
              UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
          } catch (Exception e1) {e1.printStackTrace();}
-         UIManager.GETSYS
-
-        JFrame frame = new JFrame("CheckBox Tree");
+        //++++++++++++++++++++++++++++++++++++++
+        JFrame frame = new JFrame("WINDOW CheckBox Tree");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        //++++++++++++++++++++++++++++++++++++++
         Vector groupVector = new Vector();
         Vector group1 = new Vector();
         group1.add("Group1");

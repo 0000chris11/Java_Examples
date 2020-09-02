@@ -23,7 +23,7 @@ import javax.swing.tree.TreeModel;
  *
  * @author Christopher
  */
-public class Main {
+public class Jtree_Main {
 
       JFrame JF = new JFrame();
       
@@ -97,7 +97,7 @@ public class Main {
             JTE.setCellRenderer(new JTE_CellRenderer());
       }
       
-      public Main() {
+      public Jtree_Main() {
             frameConfig();
             //++++++++++++++++++++++++++++++++++++++++++++++
             treeConfig();
@@ -106,6 +106,6 @@ public class Main {
       }
 
       public static void main(String[] args) {
-            new Main();
+            new Jtree_Main();
       }
 }

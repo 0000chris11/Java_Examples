@@ -27,7 +27,7 @@ public class JTE_SL implements TreeSelectionListener {
                   //+ JTE.getLastSelectedPathComponent());
                   //+++++++++++++++++++++++++++++++++++++++++++++
                   DefaultMutableTreeNode node
-                          = (DefaultMutableTreeNode) Main.JTE.getLastSelectedPathComponent();
+                          = (DefaultMutableTreeNode) Jtree_Main.JTE.getLastSelectedPathComponent();
 
                   if (node != null) {
                         if (node.toString().equals("Pinkie Pie")) {
@@ -50,7 +50,7 @@ public class JTE_SL implements TreeSelectionListener {
                   public void run() {
                         try {
                               Thread.sleep(1000);
-                              Main.JTE.getSelectionModel().clearSelection();
+                              Jtree_Main.JTE.getSelectionModel().clearSelection();
                         } catch (InterruptedException ex) {
 
                         }

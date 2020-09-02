@@ -38,6 +38,17 @@ public class VT {
       JTree JTE;
       JScrollPane SC_JTE;
 
+      static void setLookAndFeel(String className) {
+            System.out.println("'\nsetLookAndFeel - > " + className);
+            try {
+                  UIManager.setLookAndFeel(
+                          className);
+            } catch (ClassNotFoundException | InstantiationException
+                    | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                  ex.printStackTrace();
+            }
+      }
+      
       private void frameConfig() {
             JF.setDefaultCloseOperation(3);
             JF.setAlwaysOnTop(true);
@@ -85,12 +96,12 @@ public class VT {
       }
       //++++++++++++++++++++++++++++++++++
       private void printComponentsJF(){
-            JF.getComponent(0).get
+            //JF.getComponent(0).get
       }
       //++++++++++++++++++++++++++++++++++
       public VT() {
             frameConfig();
-            JF.add(JP, BorderLayout.WEST);
+            
             JP.setLayout(new BoxLayout(JP, BoxLayout.Y_AXIS));
             JP.setBackground(Color.DARK_GRAY);
             //+++++++++++++++++++++++++++++++++++
@@ -103,22 +114,27 @@ public class VT {
 
             JP.add(btn_p);
             //+++++++++++++++++++++++++++++++++++
-            JF.add(JMB, BorderLayout.NORTH);
             JMB.add(JM);
             JM.add(MI);
             //+++++++++++++++++++++++++++++++++++
-            JF.add(JTB, BorderLayout.EAST);
             JTB.setBackground(Color.LIGHT_GRAY);
             JTB.add(btn_tb);
             //+++++++++++++++++++++++++++++++++++
             tableConfig();
             SC_JT = new JScrollPane(JT);
-            JF.add(SC_JT, BorderLayout.CENTER);
             //+++++++++++++++++++++++++++++++++++
-            JTE = new JTree(treeConfig());//
+            JTE = new JTree(treeConfig());
             SC_JTE = new JScrollPane(JTE);
-            JF.add(SC_JTE, BorderLayout.SOUTH);
+            SC_JTE.setMaximumSize(new Dimension(SC_JTE.getMaximumSize().width, 90));
+            SC_JTE.setMaximumSize(new Dimension(SC_JTE.getMaximumSize().width, 40));
             //+++++++++++++++++++++++++++++++++++
+            JF.add(SC_JTE, BorderLayout.WEST);
+            JF.add(JP, BorderLayout.SOUTH);
+            JF.add(JMB, BorderLayout.NORTH);
+            JF.add(JTB, BorderLayout.EAST);
+            
+            JF.add(SC_JT, BorderLayout.CENTER);
+            
             JF.setVisible(true);
       }
 }
