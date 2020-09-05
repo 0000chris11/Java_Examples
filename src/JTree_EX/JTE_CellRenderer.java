@@ -29,8 +29,6 @@ public class JTE_CellRenderer extends DefaultTreeCellRenderer {
       public Component getTreeCellRendererComponent(JTree tree, Object value,
               boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
 
-            
-            
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
             System.out.println("node.getRoot().getChildAt(0): " + node.getRoot().getChildAt(0));
             
@@ -69,7 +67,6 @@ public class JTE_CellRenderer extends DefaultTreeCellRenderer {
       public JTE_CellRenderer() {
             //ImageIcon icon = new ImageIcon("C:\\C0F\\Image\\X Icons\\+ small.png");
             //this.setLeafIcon(icon);
-
             this.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
             this.setBackgroundSelectionColor(Color.CYAN);
             this.setTextNonSelectionColor(Color.WHITE);

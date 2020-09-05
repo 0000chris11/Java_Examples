@@ -26,8 +26,12 @@ import javax.swing.tree.TreeModel;
 public class Jtree_Main {
 
       JFrame JF = new JFrame();
-      
+
       static JTree JTE;
+      JScrollPane sc_JTE;
+      
+      static JTree JTE2;
+      JScrollPane sc_JTE2;
 
       private DefaultMutableTreeNode getDefaultMutableTreeNode() {
 
@@ -51,21 +55,43 @@ public class Jtree_Main {
                     new DefaultMutableTreeNode("Inaho Misora"));
 
             //root.add(new DefaultMutableTreeNode(new JCheckBox("beeeee")));
+            return root;
+      }
+
+      private DefaultMutableTreeNode getDefaultMutableTreeNode2() {
+            DefaultMutableTreeNode root = new DefaultMutableTreeNode(
+                    "Main Options");
+
+            root.add(new DefaultMutableTreeNode("Look"));
+            ((DefaultMutableTreeNode) root.getChildAt(0)).add(
+                    new DefaultMutableTreeNode(new CheckBoxNode("L1", false)));
+            ((DefaultMutableTreeNode) root.getChildAt(0)).add(
+                    new DefaultMutableTreeNode(new CheckBoxNode("L2", false)));
+            ((DefaultMutableTreeNode) root.getChildAt(0)).add(
+                    new DefaultMutableTreeNode(new CheckBoxNode("L3", false)));
+
+            root.add(new DefaultMutableTreeNode("Persona"));
+            ((DefaultMutableTreeNode) root.getChildAt(1)).add(
+                    new DefaultMutableTreeNode(new CheckBoxNode("P1", false)));
+            ((DefaultMutableTreeNode) root.getChildAt(1)).add(
+                    new DefaultMutableTreeNode(new CheckBoxNode("P2", false)));
+            ((DefaultMutableTreeNode) root.getChildAt(1)).add(
+                    new DefaultMutableTreeNode(new CheckBoxNode("P3", false)));
             
             return root;
       }
-      
-      private void setBackgroundToNodes(){
+
+      private void setBackgroundToNodes() {
             //CELLRENDERER NEEDED!!!!!!!!!!!!!!!!!!!
             TreeModel tm = JTE.getModel();
             Object o = tm.getRoot();
-            for(int a = 0; a < tm.getChildCount(o); a++){
-                  
+            for (int a = 0; a < tm.getChildCount(o); a++) {
+
                   //((DefaultMutableTreeNode) tm.getChild(o, a));
             }
       }
 
-      private void frameConfig(){
+      private void frameConfig() {
             JF.setDefaultCloseOperation(3);
             JF.setAlwaysOnTop(true);
             JF.setLayout(null);
@@ -73,15 +99,15 @@ public class Jtree_Main {
             JF.setLocationRelativeTo(null);
             JF.setSize(471, 644);
       }
-      
-      private void treeConfig(){
+
+      private void treeConfig() {
             JTE = new JTree(getDefaultMutableTreeNode());
-            JScrollPane sc_JTE = new JScrollPane(JTE);
-            
+            sc_JTE = new JScrollPane(JTE);
+
             JF.add(sc_JTE);
             JTE.setLocation(0, 0);
             MM.setComponentToCenterJFrame(sc_JTE, JF);
-            
+
             JTE.setEditable(false);
             JTE.setRootVisible(false);
             JTE.setShowsRootHandles(true);
@@ -89,7 +115,7 @@ public class Jtree_Main {
 
             JTE.putClientProperty("JTree.lineStyle", "Horizontal");
             //JTE.putClientProperty("JTree.lineStyle", "None");
-            
+
             JTE.setBackground(Color.DARK_GRAY);
             JTE.setSize(400, 800);
             JTE.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
@@ -97,10 +123,35 @@ public class Jtree_Main {
             JTE.setCellRenderer(new JTE_CellRenderer());
       }
       
+      private void treeConfig2() {
+            JTE2 = new JTree(getDefaultMutableTreeNode2());
+            sc_JTE2 = new JScrollPane(JTE2);
+
+            JF.add(sc_JTE2);
+            JTE2.setLocation(0, 0);
+            sc_JTE2.setLocation(sc_JTE.getX() + sc_JTE.getWidth() + 4, sc_JTE.getY());
+            sc_JTE2.setSize(sc_JTE.getSize());
+            
+            JTE2.setEditable(false);
+            JTE2.setRootVisible(false);
+            JTE2.setShowsRootHandles(true);
+            JTE2.setRowHeight(26);
+
+            JTE2.putClientProperty("JTree.lineStyle", "Horizontal");
+            //JTE2.putClientProperty("JTree.lineStyle", "None");
+
+            JTE2.setBackground(Color.DARK_GRAY);
+            JTE2.setSize(400, 800);
+            JTE2.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+            //JTE2.addTreeSelectionListener(new JTE_SL());
+            //JTE2.setCellRenderer(new JTE_CellRenderer());
+      }
+
       public Jtree_Main() {
             frameConfig();
             //++++++++++++++++++++++++++++++++++++++++++++++
             treeConfig();
+            treeConfig2();
             //++++++++++++++++++++++++++++++++++++++++++++++
             JF.setVisible(true);
       }
