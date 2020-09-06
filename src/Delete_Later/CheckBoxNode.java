@@ -5,12 +5,12 @@
  */
 package Delete_Later;
 
-public class CheckBoxNode2 {
+public class CheckBoxNode {
       
       String text;
       boolean selected;
 
-      public CheckBoxNode2(String text, boolean selected) {
+      public CheckBoxNode(String text, boolean selected) {
             this.text = text;
             this.selected = selected;
       }

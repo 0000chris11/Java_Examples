@@ -16,17 +16,18 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 
 public class CheckBoxNodeRenderer implements TreeCellRenderer {
+      
       private JCheckBox checkBoxLeaf = new JCheckBox();
     
     private DefaultTreeCellRenderer nonLeafRenderer = new DefaultTreeCellRenderer();
     
     Color selectionBorderColor, selectionForeground, selectionBackground,
             textForeground, textBackground;
-    
-    protected JCheckBox getLeafRenderer() {
+    //++++++++++++++++++++++++++++++++++++++
+    protected JCheckBox getCheckBoxLeaf() {
         return checkBoxLeaf;
     }
-    
+    //+++++++++++++++++++++++++++++++++++++
     public CheckBoxNodeRenderer() {
         Font fontValue;
         fontValue = UIManager.getFont("Tree.font");
@@ -45,7 +46,7 @@ public class CheckBoxNodeRenderer implements TreeCellRenderer {
         textForeground = UIManager.getColor("Tree.textForeground");
         textBackground = UIManager.getColor("Tree.textBackground");
     }
-    
+    //++++++++++++++++++++++++++++++++++++++++++++++++++
     public Component getTreeCellRendererComponent(JTree tree, Object value,
             boolean selected, boolean expanded, boolean leaf, int row,
             boolean hasFocus) {

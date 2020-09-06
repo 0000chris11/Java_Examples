@@ -21,9 +21,9 @@ import javax.swing.tree.DefaultTreeCellRenderer;
  */
 public class JTE_CellRenderer extends DefaultTreeCellRenderer {
 
-      final File heart = new File("C:\\C0F\\Image\\X Icons\\Not Mine\\like.png");
-      final File note = new File("C:\\C0F\\Image\\X Icons\\Not Mine\\musicNote.png");
-      final File folder = new File("C:\\C0F\\Image\\X Icons\\Not Mine\\folder-blue-512.png");
+      final File heart = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\like.png");
+      final File note = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\musicNote.png");
+      final File folder = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\folder-blue-512.png");
 
       @Override
       public Component getTreeCellRendererComponent(JTree tree, Object value,

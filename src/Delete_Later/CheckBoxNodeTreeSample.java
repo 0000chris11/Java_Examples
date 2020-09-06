@@ -76,7 +76,7 @@ public class CheckBoxNodeTreeSample {
             children_to_be_checked.add("child2");
             children_to_be_checked.add("child4");
             children_to_be_checked.add("child8");
-
+            //++++++++++++++++++++++++++++++++++++++++++++++++
             final DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Root");
 
             for (int i = 0; i < groupVector.size(); i++) {
@@ -110,7 +110,7 @@ public class CheckBoxNodeTreeSample {
                   }
 
             }
-
+            //++++++++++++++++++++++++++++++++++++++++++++++++
             JTree tree = new JTree(rootNode);
             tree.setToggleClickCount(1);
             tree.setRootVisible(false);
@@ -206,100 +206,4 @@ public class CheckBoxNodeTreeSample {
 }
 //==============================================
 
-class CheckBoxNodeEditor extends AbstractCellEditor implements TreeCellEditor {
-
-      CheckBoxNodeRenderer renderer = new CheckBoxNodeRenderer();
-
-      ChangeEvent changeEvent = null;
-
-      JTree tree1;
-
-      DefaultMutableTreeNode editedNode;
-
-      public CheckBoxNodeEditor(JTree tree) {
-            this.tree1 = tree;
-      }
-
-      public Object getCellEditorValue() {
-            JCheckBox checkbox = renderer.getLeafRenderer();
-            CheckBoxNode checkBoxNode = new CheckBoxNode(checkbox.getText(),
-                    checkbox.isSelected());
-            return checkBoxNode;
-      }
-
-      public boolean isCellEditable(EventObject event) {
-            boolean returnValue = false;
-            if (event instanceof MouseEvent) {
-                  MouseEvent mouseEvent = (MouseEvent) event;
-                  TreePath path = tree1.getPathForLocation(mouseEvent.getX(),
-                          mouseEvent.getY());
-                  if (path != null) {
-                        Object node = path.getLastPathComponent();
-                        if ((node != null) && (node instanceof DefaultMutableTreeNode)) {
-                              editedNode = (DefaultMutableTreeNode) node;
-                              Object userObject = editedNode.getUserObject();
-                              Rectangle r = tree1.getPathBounds(path);
-                              int x = mouseEvent.getX() - r.x;
-                              int y = mouseEvent.getY() - r.y;
-                              JCheckBox checkbox = renderer.getLeafRenderer();
-                              checkbox.setText("");
-                              returnValue = userObject instanceof CheckBoxNode && x > 0 && x < checkbox.getPreferredSize().width;
-                        }
-                  }
-            }
-            return returnValue;
-      }
-
-      public Component getTreeCellEditorComponent(final JTree tree, Object value,
-              boolean selected, boolean expanded, boolean leaf, int row) {
-
-            Component editor = renderer.getTreeCellRendererComponent(tree, value,
-                    true, expanded, leaf, row, true);
-
-            ItemListener itemListener = new ItemListener() {
-                  public void itemStateChanged(ItemEvent itemEvent) {
-                        tree.repaint();
-                        fireEditingStopped();
-                  }
-            };
-
-            if (editor instanceof JCheckBox) {
-                  ((JCheckBox) editor).addItemListener(itemListener);
-            }
-
-            return editor;
-      }
-}
-//================================================
-
-class CheckBoxNode {
-
-      String text;
-
-      boolean selected;
-
-      public CheckBoxNode(String text, boolean selected) {
-            this.text = text;
-            this.selected = selected;
-      }
-
-      public boolean isSelected() {
-            return selected;
-      }
-
-      public void setSelected(boolean newValue) {
-            selected = newValue;
-      }
-
-      public String getText() {
-            return text;
-      }
-
-      public void setText(String newValue) {
-            text = newValue;
-      }
-
-      public String toString() {
-            return getClass().getName() + "[" + text + "/" + selected + "]";
-      }
-}
+//===============================================

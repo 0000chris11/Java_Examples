@@ -97,7 +97,7 @@ public class Jtree_Main {
             JF.setLayout(null);
             JF.getContentPane().setBackground(Color.LIGHT_GRAY);
             JF.setLocationRelativeTo(null);
-            JF.setSize(471, 644);
+            JF.setSize(942, 644);
       }
 
       private void treeConfig() {
@@ -106,7 +106,7 @@ public class Jtree_Main {
 
             JF.add(sc_JTE);
             JTE.setLocation(0, 0);
-            MM.setComponentToCenterJFrame(sc_JTE, JF);
+            sc_JTE.setSize(JF.getWidth() / 2, JF.getHeight() - 30);
 
             JTE.setEditable(false);
             JTE.setRootVisible(false);
@@ -144,7 +144,7 @@ public class Jtree_Main {
             JTE2.setSize(400, 800);
             JTE2.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
             //JTE2.addTreeSelectionListener(new JTE_SL());
-            //JTE2.setCellRenderer(new JTE_CellRenderer());
+            JTE2.setCellRenderer(new JTE2_CellRenderer());
       }
 
       public Jtree_Main() {
