@@ -72,24 +72,15 @@ public class Jtree_Main {
 
             root.add(new DefaultMutableTreeNode("Persona"));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
-                    new DefaultMutableTreeNode(new CheckBoxNode("P1", false)));
+                    new DefaultMutableTreeNode(new CheckBoxNode("P1", true)));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
-                    new DefaultMutableTreeNode(new CheckBoxNode("P2", false)));
+                    new DefaultMutableTreeNode(new CheckBoxNode("P2", true)));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
-                    new DefaultMutableTreeNode(new CheckBoxNode("P3", false)));
+                    new DefaultMutableTreeNode(new CheckBoxNode("P3", true)));
             
             return root;
       }
 
-      private void setBackgroundToNodes() {
-            //CELLRENDERER NEEDED!!!!!!!!!!!!!!!!!!!
-            TreeModel tm = JTE.getModel();
-            Object o = tm.getRoot();
-            for (int a = 0; a < tm.getChildCount(o); a++) {
-
-                  //((DefaultMutableTreeNode) tm.getChild(o, a));
-            }
-      }
 
       private void frameConfig() {
             JF.setDefaultCloseOperation(3);

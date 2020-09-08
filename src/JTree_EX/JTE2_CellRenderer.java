@@ -19,7 +19,7 @@ import javax.swing.tree.TreeCellRenderer;
  *
  * @author Christopher
  */
-public class JTE2_CellRenderer implements TreeCellRenderer {
+public class JTE2_CellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
 
       private JCheckBox checkBoxLeaf = new JCheckBox();
       private DefaultTreeCellRenderer nonLeafRenderer = new DefaultTreeCellRenderer();
@@ -34,22 +34,28 @@ public class JTE2_CellRenderer implements TreeCellRenderer {
 
       //+++++++++++++++++++++++++++++++++++++
       public JTE2_CellRenderer() {
-            Font fontValue;
-            fontValue = UIManager.getFont("Tree.font");
-            if (fontValue != null) {
-                  checkBoxLeaf.setFont(fontValue);
-            }
+            //this.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
+            //checkBoxLeaf.setFont();
+
             Boolean booleanValue = (Boolean) UIManager
                     .get("Tree.drawsFocusBorderAroundIcon");
 
             checkBoxLeaf.setFocusPainted((booleanValue != null)
                     && (booleanValue.booleanValue()));
 
-            selectionBorderColor = UIManager.getColor("Tree.selectionBorderColor");
-            selectionForeground = UIManager.getColor("Tree.selectionForeground");
-            selectionBackground = UIManager.getColor("Tree.selectionBackground");
-            textForeground = UIManager.getColor("Tree.textForeground");
-            textBackground = UIManager.getColor("Tree.textBackground");
+            //++++++++++++++++++++++++++++++++++++++++++++++
+            //selectionBorderColor = UIManager.getColor("Tree.selectionBorderColor");
+            selectionForeground = Color.BLACK;
+            selectionBackground = new Color(Color.CYAN.getRed(),
+                    Color.CYAN.getGreen(), Color.CYAN.getBlue(), 100);
+            textForeground = Color.WHITE;
+            //textBackground = UIManager.getColor("Tree.textBackground");
+            textBackground = new Color(0, 0, 0, 0);
+            //DefaultVALUES++++++++++++++++++++++++++++++++++++++++++++++
+            this.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
+            this.setBackgroundSelectionColor(Color.CYAN);
+            this.setTextNonSelectionColor(Color.WHITE);
+            this.setTextSelectionColor(Color.BLACK);
       }
 
       @Override
@@ -59,15 +65,18 @@ public class JTE2_CellRenderer implements TreeCellRenderer {
 
             Component returnValue;
 
-            System.out.println("Value: " + value);
-            String stringValue = tree.convertValueToText(value, selected,
-                    expanded, leaf, row, false);
-            System.out.println("StringValue: " + stringValue);
-
-            checkBoxLeaf.setText(stringValue);
-            checkBoxLeaf.setSelected(false);
-
-            checkBoxLeaf.setEnabled(tree.isEnabled());
+            //System.out.println("userObject: " + 
+              //      ((DefaultMutableTreeNode) value).getUserObject());
+            
+            Object userObject = ((DefaultMutableTreeNode) value).getUserObject();
+            checkBoxLeaf.setText(value.toString());
+            
+            if (userObject instanceof CheckBoxNode) {
+                  boolean isSel = ((CheckBoxNode) userObject).isSelected();
+                  //System.out.println("isSelected: " + isSel);
+                  checkBoxLeaf.setSelected(isSel);
+            }
+            //checkBoxLeaf.setEnabled(tree.isEnabled());
 
             if (selected) {
                   checkBoxLeaf.setForeground(selectionForeground);
@@ -76,17 +85,19 @@ public class JTE2_CellRenderer implements TreeCellRenderer {
                   checkBoxLeaf.setForeground(textForeground);
                   checkBoxLeaf.setBackground(textBackground);
             }
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
+            if (node.isLeaf()) {
+                  returnValue = checkBoxLeaf;
+            } else {
+                  super.getTreeCellRendererComponent(
+                          tree, value, selected,
+                          expanded, leaf, row,
+                          hasFocus);
 
-            if ((value != null) && (value instanceof DefaultMutableTreeNode)) {
-                  Object userObject = ((DefaultMutableTreeNode) value)
-                          .getUserObject();
-                  if (userObject instanceof Delete_Later.CheckBoxNode) {
-                        Delete_Later.CheckBoxNode node = (Delete_Later.CheckBoxNode) userObject;
-                        checkBoxLeaf.setText(node.getText());
-                        checkBoxLeaf.setSelected(node.isSelected());
-                  }
+                  returnValue = this;
             }
-            returnValue = checkBoxLeaf;
+
             return returnValue;
       }
 

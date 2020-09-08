@@ -56,8 +56,10 @@ public class CheckBoxNodeEditor extends AbstractCellEditor implements TreeCellEd
       @Override
       public Object getCellEditorValue() {
             JCheckBox checkbox = renderer.getCheckBoxLeaf();
+            
             CheckBoxNode checkBoxNode = new CheckBoxNode(checkbox.getText(),
                     checkbox.isSelected());
+            
             return checkBoxNode;
       }
 
@@ -78,7 +80,9 @@ public class CheckBoxNodeEditor extends AbstractCellEditor implements TreeCellEd
                               int y = mouseEvent.getY() - r.y;
                               JCheckBox checkbox = renderer.getCheckBoxLeaf();
                               checkbox.setText("");
-                              returnValue = userObject instanceof CheckBoxNode && x > 0 && x < checkbox.getPreferredSize().width;
+                              returnValue = 
+                                      userObject instanceof 
+                                      CheckBoxNode && x > 0 && x < checkbox.getPreferredSize().width;
                         }
                   }
             }

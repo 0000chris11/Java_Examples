@@ -30,11 +30,11 @@ public class JTE_CellRenderer extends DefaultTreeCellRenderer {
               boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
 
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
-            System.out.println("node.getRoot().getChildAt(0): " + node.getRoot().getChildAt(0));
+            //System.out.println("node.getRoot().getChildAt(0): " + node.getRoot().getChildAt(0));
             
             if (node.isLeaf()) {
                   if (node.getParent().equals(node.getRoot().getChildAt(1))) {
-                        System.out.println(node + " is a female");
+                        //System.out.println(node + " is a female");
                         this.setLeafIcon(new ImageIcon(MM.resizeImage(heart, 30, 20)));
                         
                   } else if (node.getParent().equals(node.getRoot().getChildAt(0))) {
@@ -49,7 +49,7 @@ public class JTE_CellRenderer extends DefaultTreeCellRenderer {
                     hasFocus);
             //+++++++++++++++++++++++++++++++++++++++++++
             if(node.getChildCount() > 0){
-                  System.out.println("\nNON-LEAF");
+                  //System.out.println("\nNON-LEAF");
                   this.setIcon(new ImageIcon(MM.resizeImage(folder, 30, 20)));
             }
             //System.out.println("sel: " + sel);

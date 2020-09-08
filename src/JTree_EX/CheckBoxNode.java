@@ -34,9 +34,11 @@ public class CheckBoxNode {
             text = newValue;
       }
       //+++++++++++++++++++++++++++++++++++++++
+      
       @Override
       public String toString() {
-            System.out.println("calling toString()");
-            return getClass().getName() + "[" + text + "/" + selected + "]";
+            //System.out.println("calling toString()");
+            return text;
       }
+      
 }
