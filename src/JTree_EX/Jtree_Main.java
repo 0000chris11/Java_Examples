@@ -64,20 +64,23 @@ public class Jtree_Main {
 
             root.add(new DefaultMutableTreeNode("Look"));
             ((DefaultMutableTreeNode) root.getChildAt(0)).add(
-                    new DefaultMutableTreeNode(new CheckBoxNode("L1", false)));
+                    new DefaultMutableTreeNode(new TextFieldNode("L1")));
             ((DefaultMutableTreeNode) root.getChildAt(0)).add(
-                    new DefaultMutableTreeNode(new CheckBoxNode("L2", false)));
+                    new DefaultMutableTreeNode(new TextFieldNode("L2")));
             ((DefaultMutableTreeNode) root.getChildAt(0)).add(
-                    new DefaultMutableTreeNode(new CheckBoxNode("L3", false)));
+                    new DefaultMutableTreeNode(new TextFieldNode("L3")));
 
             root.add(new DefaultMutableTreeNode("Persona"));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
                     new DefaultMutableTreeNode(new CheckBoxNode("P1", true)));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
-                    new DefaultMutableTreeNode(new CheckBoxNode("P2", true)));
+                    new DefaultMutableTreeNode(new CheckBoxNode("P2", false)));
             ((DefaultMutableTreeNode) root.getChildAt(1)).add(
                     new DefaultMutableTreeNode(new CheckBoxNode("P3", true)));
             
+            root.add(new DefaultMutableTreeNode("Type"));
+            ((DefaultMutableTreeNode) root.getChildAt(1)).add(
+                    new DefaultMutableTreeNode(new JToggleButton());
             return root;
       }
 
@@ -123,7 +126,7 @@ public class Jtree_Main {
             sc_JTE2.setLocation(sc_JTE.getX() + sc_JTE.getWidth() + 4, sc_JTE.getY());
             sc_JTE2.setSize(sc_JTE.getSize());
             
-            JTE2.setEditable(false);
+            JTE2.setEditable(true);
             JTE2.setRootVisible(false);
             JTE2.setShowsRootHandles(true);
             JTE2.setRowHeight(26);
@@ -136,6 +139,7 @@ public class Jtree_Main {
             JTE2.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
             //JTE2.addTreeSelectionListener(new JTE_SL());
             JTE2.setCellRenderer(new JTE2_CellRenderer());
+            JTE2.setCellEditor(new JTE2_CellEditor(JTE2));
       }
 
       public Jtree_Main() {

@@ -6,6 +6,9 @@
 package JTree_EX;
 
 import java.awt.Component;
+import java.awt.Rectangle;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
 import javax.swing.AbstractCellEditor;
@@ -23,7 +26,9 @@ import javax.swing.tree.TreePath;
 public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEditor {
 
       JTE2_CellRenderer renderer = new JTE2_CellRenderer();
-
+      
+      DefaultMutableTreeNode editedNode;
+      
       JTree JTE;
       
       public JTE2_CellEditor(JTree jtr){
@@ -32,7 +37,25 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
       
       @Override
       public Component getTreeCellEditorComponent(JTree tree, Object value, boolean isSelected, boolean expanded, boolean leaf, int row) {
-
+            System.out.println("getTreeCellEditorComponent");
+            //this method won't be call until isCellEditable method return true
+            
+            Component editor = renderer.getTreeCellRendererComponent(tree, value,
+                    true, expanded, leaf, row, true);
+            
+            //+++++++++++++++++++++++++++++++++++++++++++++++
+            ItemListener itemListener = new ItemListener() {
+                  public void itemStateChanged(ItemEvent itemEvent) {
+                        tree.repaint();
+                        fireEditingStopped();//???????????????????????
+                  }
+            };
+            //+++++++++++++++++++++++++++++++++++++++++++++++
+            if (editor instanceof JCheckBox) {
+                  ((JCheckBox) editor).addItemListener(itemListener);
+            }
+            
+            return editor;
       }
 
       @Override
@@ -48,6 +71,7 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
       @Override
       public boolean isCellEditable(EventObject anEvent) {
             System.out.println("isCellEditable");
+            //System for get a small range/area for to activated
             boolean returnValue = false;
             if (anEvent instanceof MouseEvent) {
                   MouseEvent mouseEvent = (MouseEvent) anEvent;
@@ -57,9 +81,24 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
                         Object node = path.getLastPathComponent();
                         //node instanceof DefaultMutableTreeNode ?????
                         if ((node != null) && (node instanceof DefaultMutableTreeNode)) {
+                              editedNode = (DefaultMutableTreeNode) node;
+                              Object userObject = editedNode.getUserObject();
                               
+                              Rectangle r = JTE.getPathBounds(path);
+                              int x = mouseEvent.getX() - r.x;
+                              int y = mouseEvent.getY() - r.y;
+                              
+                              JCheckBox checkbox = renderer.getCheckBoxLeaf();
+                              
+                              checkbox.setText("");//????????????????
+                              
+                              returnValue = 
+                                      userObject instanceof CheckBoxNode && 
+                                      x > 0 && 
+                                      x < checkbox.getPreferredSize().width ;
                         }
                   }
             }
+            return returnValue;
       }
 }

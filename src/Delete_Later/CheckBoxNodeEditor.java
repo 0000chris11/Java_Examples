@@ -38,7 +38,7 @@ public class CheckBoxNodeEditor extends AbstractCellEditor implements TreeCellEd
       public Component getTreeCellEditorComponent(JTree tree, Object value, boolean isSelected, boolean expanded, boolean leaf, int row) {
             Component editor = renderer.getTreeCellRendererComponent(tree, value,
                     true, expanded, leaf, row, true);
-
+            
             ItemListener itemListener = new ItemListener() {
                   public void itemStateChanged(ItemEvent itemEvent) {
                         tree.repaint();
@@ -75,14 +75,26 @@ public class CheckBoxNodeEditor extends AbstractCellEditor implements TreeCellEd
                         if ((node != null) && (node instanceof DefaultMutableTreeNode)) {
                               editedNode = (DefaultMutableTreeNode) node;
                               Object userObject = editedNode.getUserObject();
+                              
                               Rectangle r = tree1.getPathBounds(path);
                               int x = mouseEvent.getX() - r.x;
                               int y = mouseEvent.getY() - r.y;
                               JCheckBox checkbox = renderer.getCheckBoxLeaf();
+                              
                               checkbox.setText("");
+                              
+                              System.out.println("x: " + x);
+                              if(x > 0){
+                                    System.out.println("\tinside (Left)");
+                              }
+                              if(x < checkbox.getPreferredSize().width){
+                                    System.out.println("\tinside (Rigth)");
+                              }
+                              
                               returnValue = 
-                                      userObject instanceof 
-                                      CheckBoxNode && x > 0 && x < checkbox.getPreferredSize().width;
+                                      userObject instanceof CheckBoxNode && 
+                                      x > 0 && 
+                                      x < checkbox.getPreferredSize().width;
                         }
                   }
             }

@@ -53,10 +53,10 @@ public class CheckBoxNodeRenderer implements TreeCellRenderer {
         
         Component returnValue;
         
-        System.out.println("Value: " + value);
+        //System.out.println("Value: " + value);
         String stringValue = tree.convertValueToText(value, selected,
                 expanded, leaf, row, false);
-        System.out.println("StringValue: " + stringValue);
+        //System.out.println("StringValue: " + stringValue);
         
         checkBoxLeaf.setText(stringValue);
         checkBoxLeaf.setSelected(false);
