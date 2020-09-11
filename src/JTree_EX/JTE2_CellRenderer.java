@@ -5,17 +5,22 @@
  */
 package JTree_EX;
 
+import AAMethods.MM;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
+import javax.swing.text.JTextComponent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
@@ -24,13 +29,15 @@ import javax.swing.tree.TreeCellRenderer;
  *
  * @author Christopher
  */
-public class JTE2_CellRenderer extends DefaultTreeCellRenderer
-        implements TreeCellRenderer {
+public class JTE2_CellRenderer implements TreeCellRenderer {
 
       private JCheckBox checkBoxLeaf = new JCheckBox();
       private JTextField textFieldLeaf = new JTextField();
 
       private DefaultTreeCellRenderer nonLeafRenderer = new DefaultTreeCellRenderer();
+
+      final File grayFolder = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\"
+              + "509-5096585_white-folder-png.png");
 
       Color CB_selectionBorderColor, CB_selectionForeground, CB_selectionBackground,
               CB_textForeground, CB_textBackground;
@@ -81,10 +88,10 @@ public class JTE2_CellRenderer extends DefaultTreeCellRenderer
             checkBoxConfig();
             textFieldConfig();
             //DEFAULT (+ NON-LEAFS)
-            this.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
-            this.setBackgroundSelectionColor(Color.CYAN);
-            this.setTextNonSelectionColor(Color.WHITE);
-            this.setTextSelectionColor(Color.BLACK);
+            nonLeafRenderer.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
+            nonLeafRenderer.setBackgroundSelectionColor(Color.CYAN);
+            nonLeafRenderer.setTextNonSelectionColor(Color.WHITE);
+            nonLeafRenderer.setTextSelectionColor(Color.BLACK);
       }
 
       @Override
@@ -103,13 +110,17 @@ public class JTE2_CellRenderer extends DefaultTreeCellRenderer
             if (node.isLeaf()) {
                   if (userObject instanceof CheckBoxNode) {
                         //OLD WAY
+
                         boolean isSel = ((CheckBoxNode) userObject).isSelected();
                         //System.out.println("isSelected: " + isSel);
                         checkBoxLeaf.setSelected(isSel);
                         returnValue = checkBoxLeaf;
 
                   } else if (userObject instanceof TextFieldNode) {
+
                         //OLD WAY
+                        //((JTextComponent) userObject).setText(((TextFieldNode) userObject).getText());
+                        //cp = (JTextComponent) userObject;
                         textFieldLeaf.setText(((TextFieldNode) userObject).getText());
                         returnValue = textFieldLeaf;
 
@@ -120,21 +131,35 @@ public class JTE2_CellRenderer extends DefaultTreeCellRenderer
                         //System.out.println(jtg.getText() + " is a instance of JToggleButton");
                         returnValue = (JToggleButton) cp;
 
+                  } else if (userObject instanceof JCheckBox) {
+                        
+                        cp = (JComponent) userObject;
+                        cp.setPreferredSize(new Dimension(200, cp.getPreferredSize().height));
+                        returnValue = (JCheckBox) cp;
+                        
                   } else {
-                        super.getTreeCellRendererComponent(
+                        return returnValue = nonLeafRenderer.getTreeCellRendererComponent(
                                 tree, value, selected,
                                 expanded, leaf, row,
                                 hasFocus);
-
-                        return returnValue = this;
                   }
             } else {
-                  super.getTreeCellRendererComponent(
+                  /*
+                  System.out.println("Value: " + value);
+                  if (value.toString().equals("JTextFields")) {
+                        //System.out.println("\t+++++++++++++YES");
+                        
+                        ((JLabel) userObject).setIcon(new ImageIcon(
+                                MM.resizeImage(grayFolder, 30, 20)));
+                        
+                        returnValue = (JLabel) cp;
+                  }
+                  */
+                  return returnValue = nonLeafRenderer.getTreeCellRendererComponent(
                           tree, value, selected,
                           expanded, leaf, row,
                           hasFocus);
 
-                  return returnValue = this;
             }
             //checkBoxLeaf.setEnabled(tree.isEnabled());
             //++++++++++++++++++++++++++++++++++++++++++++
