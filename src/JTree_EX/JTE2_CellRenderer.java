@@ -34,7 +34,7 @@ public class JTE2_CellRenderer implements TreeCellRenderer {
       private JCheckBox checkBoxLeaf = new JCheckBox();
       private JTextField textFieldLeaf = new JTextField();
 
-      private DefaultTreeCellRenderer nonLeafRenderer = new DefaultTreeCellRenderer();
+      private DefaultTreeCellRenderer defaultRenderer = new DefaultTreeCellRenderer();
 
       final File grayFolder = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\"
               + "509-5096585_white-folder-png.png");
@@ -88,10 +88,10 @@ public class JTE2_CellRenderer implements TreeCellRenderer {
             checkBoxConfig();
             textFieldConfig();
             //DEFAULT (+ NON-LEAFS)
-            nonLeafRenderer.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
-            nonLeafRenderer.setBackgroundSelectionColor(Color.CYAN);
-            nonLeafRenderer.setTextNonSelectionColor(Color.WHITE);
-            nonLeafRenderer.setTextSelectionColor(Color.BLACK);
+            defaultRenderer.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
+            defaultRenderer.setBackgroundSelectionColor(Color.CYAN);
+            defaultRenderer.setTextNonSelectionColor(Color.WHITE);
+            defaultRenderer.setTextSelectionColor(Color.BLACK);
       }
 
       @Override
@@ -138,7 +138,7 @@ public class JTE2_CellRenderer implements TreeCellRenderer {
                         returnValue = (JCheckBox) cp;
                         
                   } else {
-                        return returnValue = nonLeafRenderer.getTreeCellRendererComponent(
+                        return returnValue = defaultRenderer.getTreeCellRendererComponent(
                                 tree, value, selected,
                                 expanded, leaf, row,
                                 hasFocus);
@@ -155,7 +155,7 @@ public class JTE2_CellRenderer implements TreeCellRenderer {
                         returnValue = (JLabel) cp;
                   }
                   */
-                  return returnValue = nonLeafRenderer.getTreeCellRendererComponent(
+                  return returnValue = defaultRenderer.getTreeCellRendererComponent(
                           tree, value, selected,
                           expanded, leaf, row,
                           hasFocus);

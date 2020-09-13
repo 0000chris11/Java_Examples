@@ -73,7 +73,7 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
             }else{
                   returnValue = UO;
             }
-            */
+             */
             return "dddddd";
       }
 
@@ -93,10 +93,8 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
                         if ((UO != null) && (UO instanceof DefaultMutableTreeNode)) {
                               editedNode = (DefaultMutableTreeNode) UO;
                               Object userObject = editedNode.getUserObject();
-                              if (userObject instanceof JToggleButton) {
+                              if (userObject instanceof JCheckBox) {
                                     //System.out.println("JToggleButton");
-                                    returnValue = true;
-                              } else {
                                     //System.out.println("CheckBox");
                                     Rectangle r = JTE.getPathBounds(path);
                                     int x = mouseEvent.getX() - r.x;
@@ -110,6 +108,9 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
                                             = userObject instanceof CheckBoxNode
                                             && x > 0
                                             && x < checkbox.getPreferredSize().width;
+                              } else {
+                                    returnValue = true;
+
                               }
                         }
                   }

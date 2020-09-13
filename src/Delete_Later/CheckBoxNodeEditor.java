@@ -82,7 +82,7 @@ public class CheckBoxNodeEditor extends AbstractCellEditor implements TreeCellEd
                               JCheckBox checkbox = renderer.getCheckBoxLeaf();
                               
                               checkbox.setText("");
-                              
+                              /*
                               System.out.println("x: " + x);
                               if(x > 0){
                                     System.out.println("\tinside (Left)");
@@ -90,6 +90,7 @@ public class CheckBoxNodeEditor extends AbstractCellEditor implements TreeCellEd
                               if(x < checkbox.getPreferredSize().width){
                                     System.out.println("\tinside (Rigth)");
                               }
+                              */
                               
                               returnValue = 
                                       userObject instanceof CheckBoxNode && 
