@@ -41,6 +41,13 @@ public class MM {
             //System.out.println("JP Bounds: " + jc.getBounds());
       }
 
+      public static void setComponentFitOnJFrame(JComponent jc, JFrame jf) {
+            jc.setBounds(2, 2,
+                    jf.getWidth() - 21,
+                    jf.getHeight() - 44);
+
+            System.out.println("JP Bounds: " + jc.getBounds());
+      }
       //DELETE+LATER+++++++++++++++++++++++++++++++++++++++++
       public static ImageIcon resizeIcon(ImageIcon ii, int imageType) {
             //+++++++++++++++++++++++++++++++++++++++++++++++++

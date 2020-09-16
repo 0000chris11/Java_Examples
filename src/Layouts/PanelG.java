@@ -33,14 +33,6 @@ public class PanelG extends JPanel {
       }
 
       public PanelG(String layout) {
-            if (layout == null) {
-                  setLayout(null);
-            }else if(layout.equalsIgnoreCase("miglayout")){
-                  setLayout(new MigLayout());
-            }else if(layout.equalsIgnoreCase("boxlayout")){
-                  setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-            }
-            setSize(300,300);
-            setBackground(Color.BLACK);
+            setBackground(Color.LIGHT_GRAY);
       }
 }
