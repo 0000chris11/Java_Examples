@@ -19,6 +19,7 @@ import net.miginfocom.swing.MigLayout;
  */
 public class PanelG extends JPanel {
 
+      
       @Override
       public void paintComponent(Graphics g) {
             //System.out.println(">>>>>paintComponents");
@@ -31,8 +32,9 @@ public class PanelG extends JPanel {
 
             super.paintComponents(g);
       }
+      
 
-      public PanelG(String layout) {
+      public PanelG() {
             setBackground(Color.LIGHT_GRAY);
       }
 }
