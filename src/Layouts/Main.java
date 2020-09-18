@@ -10,7 +10,10 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.*;
+import javax.swing.GroupLayout.SequentialGroup;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -39,10 +42,52 @@ public class Main {
       static JPanel[] JPS = new JPanel[txs.length];
 
       private void setPanelsLayouts() {
+            MouseListener ml = new MouseListener() {
+                  @Override
+                  public void mouseClicked(MouseEvent e) {
+
+                  }
+
+                  @Override
+                  public void mousePressed(MouseEvent e) {
+                        System.out.println("LISTEN!");
+                        if (e.getButton() == 3) {
+                              for (int a = 0; a < JPS.length; a++) {
+                                    if (e.getComponent() == JPS[a]) {
+                                          //System.out.println("\t" + txs[a]);
+                                          System.out.println("\t" + JPS[a].getMousePosition());
+                                          JButton btn = new JButton("M");
+                                          //btn.setBounds(0, 0, 60, 30);
+                                          btn.setLocation(JPS[a].getMousePosition());
+                                          btn.setSize(60, 30);
+                                          JPS[a].add(btn);
+                                          JPS[a].repaint();
+                                    }
+                              }
+                        }
+                  }
+
+                  @Override
+                  public void mouseReleased(MouseEvent e) {
+
+                  }
+
+                  @Override
+                  public void mouseEntered(MouseEvent e) {
+
+                  }
+
+                  @Override
+                  public void mouseExited(MouseEvent e) {
+
+                  }
+
+            };
             for (int a = 0; a < JPS.length; a++) {
                   JPS[a] = new JPanel();
                   JPS[a].setBackground(Color.BLACK);
                   JPS[a].setToolTipText(txs[a]);
+                  JPS[a].addMouseListener(ml);
             }
 
             JPS[0].setLayout(null);
@@ -52,7 +97,17 @@ public class Main {
             JPS[4].setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
             JPS[5].setLayout(new GridBagLayout());
             JPS[6].setLayout(new GridLayout(2, 2));
-            JPS[7].setLayout(new GroupLayout(JPS[7]));
+            
+            GroupLayout groupl = new GroupLayout(JPS[7]);
+            JPS[7].setLayout(groupl);
+            groupl.setAutoCreateGaps(true);
+            groupl.setAutoCreateContainerGaps(true);
+            
+            SequentialGroup sg = groupl.createSequentialGroup();
+            groupl.setHorizontalGroup(sg);
+            sg.addComponent(new JButton("1ST"));
+            sg.addComponent(new JButton("2ND"));
+            
             JPS[8].setLayout(new MigLayout());
             JPS[9].setLayout(new OverlayLayout(JPS[9]));
             JPS[10].setLayout(new SpringLayout());
@@ -109,7 +164,7 @@ public class Main {
 
                   }
 
-            }
+            };
             vt.getBTNS().get(0).addActionListener(al);
             vt.getBTNS().get(1).addActionListener(al);
             vt.getBTNS().get(2).addActionListener(al);
@@ -126,7 +181,7 @@ public class Main {
             JF.setAlwaysOnTop(true);
             //JF.setLayout(new BoxLayout(JF.getContentPane(), BoxLayout.X_AXIS));
             JF.setLocationRelativeTo(null);
-            JF.setLayout(new GridLayout(1,1,2,2));
+            JF.setLayout(new GridLayout(1, 1, 2, 2));
             JF.setSize(1200, 600);
             //int d = 2;
             int sX = 0;
