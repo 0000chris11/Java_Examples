@@ -10,9 +10,14 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.*;
+import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
 import net.miginfocom.swing.MigLayout;
 
@@ -20,12 +25,13 @@ import net.miginfocom.swing.MigLayout;
  *
  * @author Christopher
  */
-public class Main {
+public class MainLayouts {
 
       JFrame JF = new JFrame();
       JPanel JP = new JPanel();
       JScrollPane SC = new JScrollPane(JP);
 
+      String[] comps;
       static String[] txs = new String[]{
             "NULL",
             "BorderLayout",
@@ -40,6 +46,48 @@ public class Main {
             "SpringLayout"};
 
       static JPanel[] JPS = new JPanel[txs.length];
+
+      //+++++++++++++++++++++++++++++++++++
+      private void cardLayoutConfig(JComponent JPS) {
+
+      }
+
+      private void groupLayoutConfig(JComponent JPS) {
+            GroupLayout groupl = new GroupLayout(JPS);
+            JPS.setLayout(groupl);
+            groupl.setAutoCreateGaps(true);
+            groupl.setAutoCreateContainerGaps(true);
+
+            JButton btn1 = new JButton("B1");
+            JButton btn2 = new JButton("B2");
+            JButton btn3 = new JButton("B3");
+            JButton btn4 = new JButton("B4");
+            //++++++++++++++++++++++++++++++++++
+            //++++++++++++++++++++++++++++++++++
+            SequentialGroup sh = groupl.createSequentialGroup();
+            ParallelGroup ph = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
+            groupl.setHorizontalGroup(sh);
+            sh.addComponent(DATA.lbs[0]);
+            sh.addComponent(DATA.lbs[1]);
+            sh.addGroup(ph);
+            ph.addComponent(DATA.lbs[2]);
+            ph.addComponent(DATA.lsts[2]);
+            ph.addComponent(DATA.btns[2]);
+            //++++++++++++++++++++++++++++++++++
+            //++++++++++++++++++++++++++++++++++
+            SequentialGroup sv = groupl.createSequentialGroup();
+            groupl.setVerticalGroup(sv);
+            //++++++++++++++++++++++++++++++++++
+            ParallelGroup pv = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+            sv.addGroup(pv);
+            pv.addComponent(DATA.lbs[0]);
+            pv.addComponent(DATA.lbs[1]);
+            pv.addComponent(DATA.lbs[2]);
+            //++++++++++++++++++++++++++++++++++
+            sv.addComponent(DATA.lsts[2]);
+            sv.addComponent(DATA.btns[2]);
+
+      }
 
       private void setPanelsLayouts() {
             MouseListener ml = new MouseListener() {
@@ -97,23 +145,14 @@ public class Main {
             JPS[4].setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
             JPS[5].setLayout(new GridBagLayout());
             JPS[6].setLayout(new GridLayout(2, 2));
-            
-            GroupLayout groupl = new GroupLayout(JPS[7]);
-            JPS[7].setLayout(groupl);
-            groupl.setAutoCreateGaps(true);
-            groupl.setAutoCreateContainerGaps(true);
-            
-            SequentialGroup sg = groupl.createSequentialGroup();
-            groupl.setHorizontalGroup(sg);
-            sg.addComponent(new JButton("1ST"));
-            sg.addComponent(new JButton("2ND"));
-            
+            groupLayoutConfig(JPS[7]);
             JPS[8].setLayout(new MigLayout());
             JPS[9].setLayout(new OverlayLayout(JPS[9]));
             JPS[10].setLayout(new SpringLayout());
       }
 
-      private void testConfig() {
+      //+++++++++++++++++++++++++++++++++++
+      private void VTConfig() {
             VT vt = new VT();
             vt.addComboBox(new JComboBox(txs));
             vt.addButton(new JButton("ADD"));
@@ -122,6 +161,17 @@ public class Main {
             vt.addButton(new JButton("LAYOUT"));
             vt.addSeparator(new JSeparator(JSeparator.VERTICAL));
             vt.setVisible(true);
+            vt.setAlwaysOnTop(true);
+
+            ItemListener il = new ItemListener() {
+                  @Override
+                  public void itemStateChanged(ItemEvent e) {
+                        CardLayout cl = (CardLayout) JP.getLayout();
+                        cl.show(JP, vt.getCBOXS().get(0).getSelectedItem().toString());
+                  }
+
+            };
+            vt.getCBOXS().get(0).addItemListener(il);
 
             ActionListener al = new ActionListener() {
                   @Override
@@ -170,12 +220,49 @@ public class Main {
             vt.getBTNS().get(2).addActionListener(al);
             vt.getBTNS().get(3).addActionListener(al);
       }
+      
+      private void VT2Config(){
+            VT vt2 = new VT();
+            vt2.addComboBox(new JComboBox(comps));
+      }
 
-      public void setName(JComponent jc, String name) {
+      private void setName(JComponent jc, String name) {
             jc.setName(name);
       }
 
-      public Main() {
+      private void setDATAComponents() {
+            String[] listT = new String[5];
+            for (int a = 0; a < 10; a++) {
+                  DATA.lbs[a] = new JLabel("LB_" + (a + 1));
+                  DATA.lbs[a].setName("LB_" + (a + 1));
+                  DATA.lbs[a].setForeground(Color.WHITE);
+                  
+                  DATA.tfs[a] = new JTextField("TF_" + (a + 1));
+                  DATA.tfs[a].setName("TF_" + (a + 1));
+                  
+                  for(int b = 0; b < 5; b++){
+                        listT[b] = "Element " + (b + 1);
+                  }
+                  DATA.lsts[a] = new JList(listT);
+                  DATA.lsts[a].setName("LIST_" + (a + 1));
+                  
+                  DATA.btns[a] = new JButton("BTN_" + (a + 1));
+                  DATA.btns[a].setName("BTN_" + (a + 1));
+            }
+            setComponentsToString();
+      }
+      private void setComponentsToString(){
+            ArrayList<String> list = new ArrayList<String>();
+            for(int a = 0; a < 10; a++){
+                  list.add(DATA.lbs[a].getName());
+                  list.add(DATA.tfs[a].getName());
+                  list.add(DATA.lsts[a].getName());
+                  list.add(DATA.btns[a].getName());
+            }
+            comps = (String[]) list.toArray();
+      }
+
+      public MainLayouts() {
             JF.setTitle("Layout Test");
             JF.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             JF.setAlwaysOnTop(true);
@@ -183,26 +270,26 @@ public class Main {
             JF.setLocationRelativeTo(null);
             JF.setLayout(new GridLayout(1, 1, 2, 2));
             JF.setSize(1200, 600);
-            //int d = 2;
-            int sX = 0;
-            int bs = 4;
+            setDATAComponents();
+            //JF.add(SC);
+            //JP.setLayout(new GridLayout(2, 5, 2, 2));
             JF.add(SC);
-            JP.setLayout(new GridLayout(2, 5, 2, 2));
-
+            JP.setLayout(new CardLayout(2, 2));
             MM.setComponentFitOnJFrame(SC, JF);
             JP.setSize(SC.getSize());
+
             setPanelsLayouts();
             for (int a = 0; a < JPS.length; a++) {
                   setName(JPS[a], ("JP_" + (a + 1)));
-                  JP.add(JPS[a]);
+                  JP.add(JPS[a], txs[a]);
             }
-            testConfig();
+            VTConfig();
             //+++++++++++++++++++++++
             JF.setVisible(true);
       }
 
       public static void main(String[] args) {
-            new Main();
+            new MainLayouts();
             //new Second();
       }
 }

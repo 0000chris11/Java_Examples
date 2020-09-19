@@ -65,6 +65,9 @@ public class VT {
       public void setVisible(boolean b){
             JF.setVisible(b);
       }
+      public void setAlwaysOnTop(boolean b){
+            JF.setAlwaysOnTop(b);
+      }
       
       public VT(){
             JF.setDefaultCloseOperation(2);
