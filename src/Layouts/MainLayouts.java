@@ -27,6 +27,8 @@ import net.miginfocom.swing.MigLayout;
  */
 public class MainLayouts {
 
+      VT vt = new VT();
+
       JFrame JF = new JFrame();
       JPanel JP = new JPanel();
       JScrollPane SC = new JScrollPane(JP);
@@ -57,35 +59,69 @@ public class MainLayouts {
             JPS.setLayout(groupl);
             groupl.setAutoCreateGaps(true);
             groupl.setAutoCreateContainerGaps(true);
-
-            JButton btn1 = new JButton("B1");
-            JButton btn2 = new JButton("B2");
-            JButton btn3 = new JButton("B3");
-            JButton btn4 = new JButton("B4");
+            groupl.setHonorsVisibility(true);
             //++++++++++++++++++++++++++++++++++
+            int gw = DATA.lbs[0].getPreferredSize().width;
+            int gh = DATA.lsts[0].getPreferredSize().height;
             //++++++++++++++++++++++++++++++++++
             SequentialGroup sh = groupl.createSequentialGroup();
-            ParallelGroup ph = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph1 = groupl.createParallelGroup(
+                    GroupLayout.Alignment.LEADING);
+            ParallelGroup ph2 = groupl.createParallelGroup(
+                    GroupLayout.Alignment.LEADING);
+            ParallelGroup ph3 = groupl.createParallelGroup(
+                    GroupLayout.Alignment.LEADING);
             groupl.setHorizontalGroup(sh);
-            sh.addComponent(DATA.lbs[0]);
-            sh.addComponent(DATA.lbs[1]);
-            sh.addGroup(ph);
-            ph.addComponent(DATA.lbs[2]);
-            ph.addComponent(DATA.lsts[2]);
-            ph.addComponent(DATA.btns[2]);
+            
+            sh.addGroup(ph1);
+            ph1.addComponent(DATA.lbs[0]);
+            ph1.addGap(gw);
+            ph1.addComponent(DATA.lbs[1]);
+            ph1.addGap(gw);
+            
+            sh.addGroup(ph2);
+            ph2.addComponent(DATA.tfs[0], 60, 150, 300);
+            ph2.addComponent(DATA.lsts[0], 60, 150, 300);
+            ph2.addComponent(DATA.tfs[1], 60, 150, 300);
+            ph2.addComponent(DATA.lsts[1], 60, 150, 300);
+            
+            sh.addGroup(ph3);
+            ph3.addComponent(DATA.btns[0]);
+            ph3.addGap(gw);
+            ph3.addComponent(DATA.btns[1]);
+            ph3.addGap(gw);
+            
+            //sh.addComponent(BTN, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
             //++++++++++++++++++++++++++++++++++
             //++++++++++++++++++++++++++++++++++
             SequentialGroup sv = groupl.createSequentialGroup();
             groupl.setVerticalGroup(sv);
+            ParallelGroup pv1 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+            ParallelGroup pv2 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+            ParallelGroup pv3 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+            ParallelGroup pv4 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
             //++++++++++++++++++++++++++++++++++
-            ParallelGroup pv = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
-            sv.addGroup(pv);
-            pv.addComponent(DATA.lbs[0]);
-            pv.addComponent(DATA.lbs[1]);
-            pv.addComponent(DATA.lbs[2]);
+            sv.addGroup(pv1);
+            pv1.addComponent(DATA.lbs[0]);
+            pv1.addComponent(DATA.tfs[0]);
+            pv1.addComponent(DATA.btns[0]);
+            
+            sv.addGroup(pv2);
+            pv2.addGap(0, gh, gh);
+            pv2.addComponent(DATA.lsts[0]);
+            pv2.addGap(0, gh, gh);
+            
+            sv.addGroup(pv3);
+            pv3.addComponent(DATA.lbs[1]);
+            pv3.addComponent(DATA.tfs[1]);
+            pv3.addComponent(DATA.btns[1]);
+            
+            sv.addGroup(pv4);
+            pv4.addGap(0, gh, gh);
+            pv4.addComponent(DATA.lsts[1]);
+            pv4.addGap(0, gh, gh);
             //++++++++++++++++++++++++++++++++++
-            sv.addComponent(DATA.lsts[2]);
-            sv.addComponent(DATA.btns[2]);
+            //sv.addComponent(DATA.btns[2]);
 
       }
 
@@ -153,7 +189,6 @@ public class MainLayouts {
 
       //+++++++++++++++++++++++++++++++++++
       private void VTConfig() {
-            VT vt = new VT();
             vt.addComboBox(new JComboBox(txs));
             vt.addButton(new JButton("ADD"));
             vt.addButton(new JButton("REPAINT"));
@@ -220,10 +255,50 @@ public class MainLayouts {
             vt.getBTNS().get(2).addActionListener(al);
             vt.getBTNS().get(3).addActionListener(al);
       }
-      
-      private void VT2Config(){
+
+      private void VT2Config() {
             VT vt2 = new VT();
             vt2.addComboBox(new JComboBox(comps));
+            vt2.addToggleButton(new JToggleButton("VISIBLE"));
+            ItemListener il = new ItemListener() {
+                  @Override
+                  public void itemStateChanged(ItemEvent e) {
+                        //System.out.println("txs length: " + txs.length);
+                        //System.out.println("");
+                        for (int a = 0; a < txs.length; a++) {
+                              if (txs[a].equals(vt.getCBOXS().get(0).getSelectedItem().toString())) {
+                                    System.out.println(txs[a]);
+                                    if (JPS[a].getComponentCount() != 0) {
+                                          //System.out.println("\tComponents count: "
+                                            //      + JPS[a].getComponentCount());
+                                          //System.out.println("\tcomps lenght: " + comps.length);
+                                          for (int b = 0; b < JPS[a].getComponentCount(); b++) {
+                                                for (int c = 0; c < vt2.getCBOXS().size(); c++) {
+                                                      if (JPS[a].getComponent(b).getName().equals(
+                                                              vt2.getCBOXS().get(c).getSelectedItem().toString())) {
+                                                            System.out.println("\t\t" + 
+                                                                    JPS[a].getComponent(b).getName());
+                                                            if (vt2.getTGGS().get(0).isSelected()) {
+                                                                  vt2.getTGGS().get(0).setText("NOT VISIBLE");
+                                                                  JPS[a].getComponent(b).setVisible(false);
+                                                            } else {
+                                                                  vt2.getTGGS().get(0).setText("VISIBLE");
+                                                                  JPS[a].getComponent(b).setVisible(true);
+                                                            }
+                                                      }
+                                                }
+                                          }
+                                    } else {
+                                          System.out.println("\tNO COMPONENTS");
+                                    }
+                              }
+                        }
+                  }
+            };
+            vt2.getTGGS().get(0).addItemListener(il);
+
+            vt2.setVisible(true);
+            vt2.setAlwaysOnTop(true);
       }
 
       private void setName(JComponent jc, String name) {
@@ -236,30 +311,32 @@ public class MainLayouts {
                   DATA.lbs[a] = new JLabel("LB_" + (a + 1));
                   DATA.lbs[a].setName("LB_" + (a + 1));
                   DATA.lbs[a].setForeground(Color.WHITE);
-                  
+
                   DATA.tfs[a] = new JTextField("TF_" + (a + 1));
                   DATA.tfs[a].setName("TF_" + (a + 1));
-                  
-                  for(int b = 0; b < 5; b++){
+
+                  for (int b = 0; b < 5; b++) {
                         listT[b] = "Element " + (b + 1);
                   }
                   DATA.lsts[a] = new JList(listT);
                   DATA.lsts[a].setName("LIST_" + (a + 1));
-                  
+
                   DATA.btns[a] = new JButton("BTN_" + (a + 1));
                   DATA.btns[a].setName("BTN_" + (a + 1));
             }
             setComponentsToString();
       }
-      private void setComponentsToString(){
+
+      private void setComponentsToString() {
             ArrayList<String> list = new ArrayList<String>();
-            for(int a = 0; a < 10; a++){
+            for (int a = 0; a < 10; a++) {
                   list.add(DATA.lbs[a].getName());
                   list.add(DATA.tfs[a].getName());
                   list.add(DATA.lsts[a].getName());
                   list.add(DATA.btns[a].getName());
             }
-            comps = (String[]) list.toArray();
+            comps = list.toArray(new String[list.size()]);
+            //String[] fff = (String[]) list.toArray();
       }
 
       public MainLayouts() {
@@ -284,6 +361,7 @@ public class MainLayouts {
                   JP.add(JPS[a], txs[a]);
             }
             VTConfig();
+            VT2Config();
             //+++++++++++++++++++++++
             JF.setVisible(true);
       }

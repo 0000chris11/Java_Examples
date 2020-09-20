@@ -13,6 +13,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JSeparator;
+import javax.swing.JToggleButton;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 
@@ -26,6 +27,7 @@ public class VT {
       private ArrayList<JButton> btns = new ArrayList<JButton>();
       private ArrayList<JComboBox> cboxs = new ArrayList<JComboBox>();
       private ArrayList<JSeparator> seps = new ArrayList<JSeparator>();
+      private ArrayList<JToggleButton> toggles = new ArrayList<JToggleButton>();
       
       public void addButton(JButton btn){
             JF.add(btn);
@@ -53,6 +55,12 @@ public class VT {
             
             JF.pack();
       }
+      public void addToggleButton(JToggleButton tg){
+            JF.add(tg);
+            toggles.add(tg);
+            
+            JF.pack();
+      }
       //+++++++++++++++++++++++++++++
       //private void 
       //+++++++++++++++++++++++++++++
@@ -61,6 +69,9 @@ public class VT {
       }
       public ArrayList<JComboBox> getCBOXS(){
             return cboxs;
+      }
+      public ArrayList<JToggleButton> getTGGS(){
+            return toggles;
       }
       public void setVisible(boolean b){
             JF.setVisible(b);
