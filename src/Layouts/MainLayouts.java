@@ -65,64 +65,53 @@ public class MainLayouts {
             int gh = DATA.lsts[0].getPreferredSize().height;
             //++++++++++++++++++++++++++++++++++
             SequentialGroup sh = groupl.createSequentialGroup();
-            ParallelGroup ph1 = groupl.createParallelGroup(
-                    GroupLayout.Alignment.LEADING);
-            ParallelGroup ph2 = groupl.createParallelGroup(
-                    GroupLayout.Alignment.LEADING);
-            ParallelGroup ph3 = groupl.createParallelGroup(
-                    GroupLayout.Alignment.LEADING);
-            groupl.setHorizontalGroup(sh);
-            
-            sh.addGroup(ph1);
-            ph1.addComponent(DATA.lbs[0]);
-            ph1.addGap(gw);
-            ph1.addComponent(DATA.lbs[1]);
-            ph1.addGap(gw);
-            
-            sh.addGroup(ph2);
-            ph2.addComponent(DATA.tfs[0], 60, 150, 300);
-            ph2.addComponent(DATA.lsts[0], 60, 150, 300);
-            ph2.addComponent(DATA.tfs[1], 60, 150, 300);
-            ph2.addComponent(DATA.lsts[1], 60, 150, 300);
-            
-            sh.addGroup(ph3);
-            ph3.addComponent(DATA.btns[0]);
-            ph3.addGap(gw);
-            ph3.addComponent(DATA.btns[1]);
-            ph3.addGap(gw);
-            
-            //sh.addComponent(BTN, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
-            //++++++++++++++++++++++++++++++++++
-            //++++++++++++++++++++++++++++++++++
             SequentialGroup sv = groupl.createSequentialGroup();
+            
+            groupl.setHorizontalGroup(sh);
             groupl.setVerticalGroup(sv);
-            ParallelGroup pv1 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
-            ParallelGroup pv2 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
-            ParallelGroup pv3 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
-            ParallelGroup pv4 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
-            //++++++++++++++++++++++++++++++++++
-            sv.addGroup(pv1);
-            pv1.addComponent(DATA.lbs[0]);
-            pv1.addComponent(DATA.tfs[0]);
-            pv1.addComponent(DATA.btns[0]);
-            
-            sv.addGroup(pv2);
-            pv2.addGap(0, gh, gh);
-            pv2.addComponent(DATA.lsts[0]);
-            pv2.addGap(0, gh, gh);
-            
-            sv.addGroup(pv3);
-            pv3.addComponent(DATA.lbs[1]);
-            pv3.addComponent(DATA.tfs[1]);
-            pv3.addComponent(DATA.btns[1]);
-            
-            sv.addGroup(pv4);
-            pv4.addGap(0, gh, gh);
-            pv4.addComponent(DATA.lsts[1]);
-            pv4.addGap(0, gh, gh);
-            //++++++++++++++++++++++++++++++++++
-            //sv.addComponent(DATA.btns[2]);
 
+            ParallelGroup ph1 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph2 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph3 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
+            //+++++++++++++++++++++++++++++++++++++++++
+            int limit = 3;
+            sh.addGroup(ph1);
+            for (int a = 0; a < limit; a++) {
+                  ph1.addComponent(DATA.lbs[a]);
+                  ph1.addGap(gw);
+            }
+            sh.addGroup(ph2);
+            for (int a = 0; a < limit; a++) {
+                  ph2.addComponent(DATA.tfs[a], 60, 150, 300);
+                  ph2.addComponent(DATA.lsts[a], 60, 150, 300);
+            }
+            sh.addGroup(ph3);
+            for (int a = 0; a < limit; a++) {
+                  ph3.addComponent(DATA.btns[a]);
+                  ph3.addGap(gw);
+            }
+            
+            for (int a = 0; a < limit; a++) {
+                  ParallelGroup pv1 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+                  sv.addGroup(pv1);
+                  
+                  pv1.addComponent(DATA.lbs[a]);
+                  pv1.addComponent(DATA.tfs[a]);
+                  pv1.addComponent(DATA.btns[a]);
+                  
+                  ParallelGroup pv2 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+                  sv.addGroup(pv2);
+                  
+                  pv2.addGap(0);
+                  pv2.addComponent(DATA.lsts[a]);
+                  pv2.addGap(0);
+            }   
+      }
+
+      private void groupLayoutConfig2(GroupLayout layout) {
+            layout.setHorizontalGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING))
+            );
       }
 
       private void setPanelsLayouts() {
@@ -270,14 +259,14 @@ public class MainLayouts {
                                     System.out.println(txs[a]);
                                     if (JPS[a].getComponentCount() != 0) {
                                           //System.out.println("\tComponents count: "
-                                            //      + JPS[a].getComponentCount());
+                                          //      + JPS[a].getComponentCount());
                                           //System.out.println("\tcomps lenght: " + comps.length);
                                           for (int b = 0; b < JPS[a].getComponentCount(); b++) {
                                                 for (int c = 0; c < vt2.getCBOXS().size(); c++) {
                                                       if (JPS[a].getComponent(b).getName().equals(
                                                               vt2.getCBOXS().get(c).getSelectedItem().toString())) {
-                                                            System.out.println("\t\t" + 
-                                                                    JPS[a].getComponent(b).getName());
+                                                            System.out.println("\t\t"
+                                                                    + JPS[a].getComponent(b).getName());
                                                             if (vt2.getTGGS().get(0).isSelected()) {
                                                                   vt2.getTGGS().get(0).setText("NOT VISIBLE");
                                                                   JPS[a].getComponent(b).setVisible(false);
