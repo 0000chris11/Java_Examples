@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -107,6 +108,14 @@ public class MainLayouts {
                   pv2.addGap(0);
             }   
       }
+      
+      private void gridBagLayout(JComponent JPS){
+            JPS.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 2;
+            c.gridy = 2;
+            JPS.add(new JButton("dddd"), c);
+      }
 
       private void groupLayoutConfig2(GroupLayout layout) {
             layout.setHorizontalGroup(layout.createSequentialGroup()
@@ -168,7 +177,7 @@ public class MainLayouts {
             JPS[2].setLayout(new BoxLayout(JPS[2], BoxLayout.Y_AXIS));
             JPS[3].setLayout(new CardLayout(2, 2));
             JPS[4].setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
-            JPS[5].setLayout(new GridBagLayout());
+            gridBagLayout(JPS[5]);
             JPS[6].setLayout(new GridLayout(2, 2));
             groupLayoutConfig(JPS[7]);
             JPS[8].setLayout(new MigLayout());
