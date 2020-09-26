@@ -28,7 +28,9 @@ import net.miginfocom.swing.MigLayout;
  */
 public class MainLayouts {
 
-      VT vt = new VT();
+      VT vtM = new VT();
+      VT vtGL = new VT();
+      VT vtGBL = new VT();
 
       JFrame JF = new JFrame();
       JPanel JP = new JPanel();
@@ -67,7 +69,7 @@ public class MainLayouts {
             //++++++++++++++++++++++++++++++++++
             SequentialGroup sh = groupl.createSequentialGroup();
             SequentialGroup sv = groupl.createSequentialGroup();
-            
+
             groupl.setHorizontalGroup(sh);
             groupl.setVerticalGroup(sv);
 
@@ -91,30 +93,47 @@ public class MainLayouts {
                   ph3.addComponent(DATA.btns[a]);
                   ph3.addGap(gw);
             }
-            
+
             for (int a = 0; a < limit; a++) {
                   ParallelGroup pv1 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
                   sv.addGroup(pv1);
-                  
+
                   pv1.addComponent(DATA.lbs[a]);
                   pv1.addComponent(DATA.tfs[a]);
                   pv1.addComponent(DATA.btns[a]);
-                  
+
                   ParallelGroup pv2 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
                   sv.addGroup(pv2);
-                  
+
                   pv2.addGap(0);
                   pv2.addComponent(DATA.lsts[a]);
                   pv2.addGap(0);
-            }   
+            }
       }
-      
-      private void gridBagLayout(JComponent JPS){
-            JPS.setLayout(new GridBagLayout());
+
+      private void gridBagLayout(JComponent JPS) {
+            GridBagLayout gbl = new GridBagLayout();
+            JPS.setLayout(gbl);
             GridBagConstraints c = new GridBagConstraints();
-            c.gridx = 2;
-            c.gridy = 2;
-            JPS.add(new JButton("dddd"), c);
+
+            for (int a = 0; a < 2; a++) {
+
+                  c.fill = GridBagConstraints.HORIZONTAL;
+                  c.weightx = 1;
+                  c.weighty = 1;
+                  c.gridx = a;
+                  c.gridy = 0;
+                        c.anchor = GridBagConstraints.FIRST_LINE_START;
+                  
+                  JPS.add(new JButton("Button " + (a + 1)), c);
+            }
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.ipady = 40;      //make this component tall
+            c.weightx = 0.0;
+            c.gridwidth = 3;
+            c.gridx = 0;
+            c.gridy = 1;
+            JPS.add(new JButton("Button 4"), c);
       }
 
       private void groupLayoutConfig2(GroupLayout layout) {
@@ -187,24 +206,33 @@ public class MainLayouts {
 
       //+++++++++++++++++++++++++++++++++++
       private void VTConfig() {
-            vt.addComboBox(new JComboBox(txs));
-            vt.addButton(new JButton("ADD"));
-            vt.addButton(new JButton("REPAINT"));
-            vt.addButton(new JButton("COMPONENTS"));
-            vt.addButton(new JButton("LAYOUT"));
-            vt.addSeparator(new JSeparator(JSeparator.VERTICAL));
-            vt.setVisible(true);
-            vt.setAlwaysOnTop(true);
+            vtM.addComboBox(new JComboBox(txs));
+            vtM.addButton(new JButton("ADD"));
+            vtM.addButton(new JButton("REPAINT"));
+            vtM.addButton(new JButton("COMPONENTS"));
+            vtM.addButton(new JButton("LAYOUT"));
+            vtM.addSeparator(new JSeparator(JSeparator.VERTICAL));
+            vtM.setVisible(true);
+            vtM.setAlwaysOnTop(true);
 
             ItemListener il = new ItemListener() {
                   @Override
                   public void itemStateChanged(ItemEvent e) {
                         CardLayout cl = (CardLayout) JP.getLayout();
-                        cl.show(JP, vt.getCBOXS().get(0).getSelectedItem().toString());
+                        String selected = vtM.getCBOXS().get(0).getSelectedItem().toString();
+                        cl.show(JP, selected);
+                        //+++++++++++++++++++
+                        vtGL.JF.dispose();
+                        vtGBL.JF.dispose();
+                        if(selected.equals("GroupLayout")){
+                              VT_GLConfig();
+                        }else if(selected.equals("GridBagLayout")){
+                              VT_GBLConfig();
+                        }
                   }
 
             };
-            vt.getCBOXS().get(0).addItemListener(il);
+            vtM.getCBOXS().get(0).addItemListener(il);
 
             ActionListener al = new ActionListener() {
                   @Override
@@ -212,7 +240,7 @@ public class MainLayouts {
                         System.out.println("LISTEN!");
 
                         for (int a = 0; a < txs.length; a++) {
-                              String item = vt.getCBOXS().get(0).getSelectedItem().toString();
+                              String item = vtM.getCBOXS().get(0).getSelectedItem().toString();
                               if (item.equals(txs[a])) {
                                     if (e.getActionCommand().equals("ADD")) {
                                           System.out.println("\t" + txs[a] + ": button added");
@@ -248,39 +276,38 @@ public class MainLayouts {
                   }
 
             };
-            vt.getBTNS().get(0).addActionListener(al);
-            vt.getBTNS().get(1).addActionListener(al);
-            vt.getBTNS().get(2).addActionListener(al);
-            vt.getBTNS().get(3).addActionListener(al);
+            vtM.getBTNS().get(0).addActionListener(al);
+            vtM.getBTNS().get(1).addActionListener(al);
+            vtM.getBTNS().get(2).addActionListener(al);
+            vtM.getBTNS().get(3).addActionListener(al);
       }
 
-      private void VT2Config() {
-            VT vt2 = new VT();
-            vt2.addComboBox(new JComboBox(comps));
-            vt2.addToggleButton(new JToggleButton("VISIBLE"));
+      private void VT_GLConfig() {
+            vtGL.addComboBox(new JComboBox(comps));
+            vtGL.addToggleButton(new JToggleButton("VISIBLE"));
             ItemListener il = new ItemListener() {
                   @Override
                   public void itemStateChanged(ItemEvent e) {
                         //System.out.println("txs length: " + txs.length);
                         //System.out.println("");
                         for (int a = 0; a < txs.length; a++) {
-                              if (txs[a].equals(vt.getCBOXS().get(0).getSelectedItem().toString())) {
+                              if (txs[a].equals(vtM.getCBOXS().get(0).getSelectedItem().toString())) {
                                     System.out.println(txs[a]);
                                     if (JPS[a].getComponentCount() != 0) {
                                           //System.out.println("\tComponents count: "
                                           //      + JPS[a].getComponentCount());
                                           //System.out.println("\tcomps lenght: " + comps.length);
                                           for (int b = 0; b < JPS[a].getComponentCount(); b++) {
-                                                for (int c = 0; c < vt2.getCBOXS().size(); c++) {
+                                                for (int c = 0; c < vtGL.getCBOXS().size(); c++) {
                                                       if (JPS[a].getComponent(b).getName().equals(
-                                                              vt2.getCBOXS().get(c).getSelectedItem().toString())) {
+                                                              vtGL.getCBOXS().get(c).getSelectedItem().toString())) {
                                                             System.out.println("\t\t"
                                                                     + JPS[a].getComponent(b).getName());
-                                                            if (vt2.getTGGS().get(0).isSelected()) {
-                                                                  vt2.getTGGS().get(0).setText("NOT VISIBLE");
+                                                            if (vtGL.getTGGS().get(0).isSelected()) {
+                                                                  vtGL.getTGGS().get(0).setText("NOT VISIBLE");
                                                                   JPS[a].getComponent(b).setVisible(false);
                                                             } else {
-                                                                  vt2.getTGGS().get(0).setText("VISIBLE");
+                                                                  vtGL.getTGGS().get(0).setText("VISIBLE");
                                                                   JPS[a].getComponent(b).setVisible(true);
                                                             }
                                                       }
@@ -293,10 +320,29 @@ public class MainLayouts {
                         }
                   }
             };
-            vt2.getTGGS().get(0).addItemListener(il);
+            vtGL.getTGGS().get(0).addItemListener(il);
 
-            vt2.setVisible(true);
-            vt2.setAlwaysOnTop(true);
+            vtGL.setVisible(true);
+            vtGL.setAlwaysOnTop(true);
+      }
+      
+      private void VT_GBLConfig(){
+            vtGBL.addButton(new JButton("getConstraints"));
+            ActionListener al = new ActionListener(){
+                  @Override
+                  public void actionPerformed(ActionEvent e) {
+                        JPanel JP = JPS[vtM.getCBOXS().get(0).getSelectedIndex()];
+                        for(int a = 0; a < JP.getComponentCount(); a++){
+                              GridBagLayout gbl = (GridBagLayout) JP.getLayout();
+                              System.out.println(JP.getComponent(a).getClass().toString() + 
+                                      ": " + gbl.getConstraints(JP.getComponent(a)));
+                              //lookupConstraints()
+                        }
+                  }
+                  
+            };
+            vtGBL.getBTNS().get(0).addActionListener(al);
+            vtGBL.JF.setVisible(true);
       }
 
       private void setName(JComponent jc, String name) {
@@ -359,7 +405,6 @@ public class MainLayouts {
                   JP.add(JPS[a], txs[a]);
             }
             VTConfig();
-            VT2Config();
             //+++++++++++++++++++++++
             JF.setVisible(true);
       }

@@ -23,7 +23,7 @@ import javax.swing.border.LineBorder;
  */
 public class VT {
       
-      private JFrame JF = new JFrame();
+      public JFrame JF = new JFrame();
       private ArrayList<JButton> btns = new ArrayList<JButton>();
       private ArrayList<JComboBox> cboxs = new ArrayList<JComboBox>();
       private ArrayList<JSeparator> seps = new ArrayList<JSeparator>();
