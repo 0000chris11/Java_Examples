@@ -117,14 +117,13 @@ public class MainLayouts {
             GridBagConstraints c = new GridBagConstraints();
 
             for (int a = 0; a < 2; a++) {
-
                   c.fill = GridBagConstraints.HORIZONTAL;
                   c.weightx = 1;
                   c.weighty = 1;
                   c.gridx = a;
                   c.gridy = 0;
-                        c.anchor = GridBagConstraints.FIRST_LINE_START;
-                  
+                  c.anchor = GridBagConstraints.FIRST_LINE_START;
+
                   JPS.add(new JButton("Button " + (a + 1)), c);
             }
             c.fill = GridBagConstraints.HORIZONTAL;
@@ -224,9 +223,9 @@ public class MainLayouts {
                         //+++++++++++++++++++
                         vtGL.JF.dispose();
                         vtGBL.JF.dispose();
-                        if(selected.equals("GroupLayout")){
+                        if (selected.equals("GroupLayout")) {
                               VT_GLConfig();
-                        }else if(selected.equals("GridBagLayout")){
+                        } else if (selected.equals("GridBagLayout")) {
                               VT_GBLConfig();
                         }
                   }
@@ -325,24 +324,68 @@ public class MainLayouts {
             vtGL.setVisible(true);
             vtGL.setAlwaysOnTop(true);
       }
-      
-      private void VT_GBLConfig(){
+
+      private void VT_GBLConfig() {
             vtGBL.addButton(new JButton("getConstraints"));
-            ActionListener al = new ActionListener(){
+            ActionListener al = new ActionListener() {
                   @Override
                   public void actionPerformed(ActionEvent e) {
                         JPanel JP = JPS[vtM.getCBOXS().get(0).getSelectedIndex()];
-                        for(int a = 0; a < JP.getComponentCount(); a++){
+                        for (int a = 0; a < JP.getComponentCount(); a++) {
                               GridBagLayout gbl = (GridBagLayout) JP.getLayout();
-                              System.out.println(JP.getComponent(a).getClass().toString() + 
-                                      ": " + gbl.getConstraints(JP.getComponent(a)));
+                              GridBagConstraints c = gbl.getConstraints(JP.getComponent(a));
+                              
+                              System.out.println(((JButton) JP.getComponent(a)).getText());
+                              System.out.println("\tanchor: " + c.anchor);
+                              System.out.println("\tfill: " + c.fill);
+                              System.out.println("\tgridheight: " + c.gridheight);
+                              System.out.println("\tgridwidth: " + c.gridwidth);
+                              System.out.println("\tgridx: " + c.gridx);
+                              System.out.println("\tgridy: " + c.gridy);
+                              System.out.println("\tinsets: " + c.insets);
+                              System.out.println("\tipadx: " + c.ipadx);
+                              System.out.println("\tipady: " + c.ipady);
+                              System.out.println("\tweightx: " + c.weightx);
+                              System.out.println("\tweighty: " + c.weighty);
                               //lookupConstraints()
+
                         }
+
                   }
-                  
+
             };
             vtGBL.getBTNS().get(0).addActionListener(al);
             vtGBL.JF.setVisible(true);
+            /*
+            lb_Title.setBorder(new EmptyBorder(2, 4, 0, 0));
+            Font F = UIManager.getFont("Label.font");
+            lb_Title.setFont(new Font(F.getName(), F.getStyle(), F.getSize() + 6));
+            lb_Title.setForeground(Color.WHITE);
+            
+            c.anchor = GridBagConstraints.PAGE_START;
+            c.fill = GridBagConstraints.BOTH;
+            //c.fill = GridBagConstraints.HORIZONTAL;
+            c.ipady = 30;
+            c.insets = new Insets(1, 2, 1, 1);
+            c.gridx = 0;
+            c.gridy = 0;
+            c.gridheight = 4;
+            c.weightx = 1;
+            c.weighty = 0;
+            JPN.add(lb_Title, c);
+
+            jps[0] = new JPanel();
+            jps[0].setBackground(Color.DARK_GRAY);
+            jps[0].setName("Options Panel");
+            c.anchor = GridBagConstraints.PAGE_START;
+            c.fill = GridBagConstraints.BOTH;
+            c.insets = new Insets(1, 2, 1, 1);
+            c.gridx = 0;
+            c.gridy = 4;
+            c.weightx = 1;
+            c.weighty = 1;
+            JPN.add(jps[0], c);
+             */
       }
 
       private void setName(JComponent jc, String name) {
