@@ -34,13 +34,6 @@ import javax.swing.tree.TreePath;
 public class MM {
 
       //++++++++++++++++++++++++++++++++++++++++++
-      public static void setComponentToCenterJFrame(JComponent JC, JFrame JF) {
-            JC.setBounds(2, 2,
-                    JF.getWidth() - 21,
-                    JF.getHeight() - 44);
-            //System.out.println("JP Bounds: " + jc.getBounds());
-      }
-
       public static void setComponentFitOnJFrame(JComponent jc, JFrame jf) {
             jc.setBounds(2, 2,
                     jf.getWidth() - 21,
