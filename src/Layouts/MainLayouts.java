@@ -76,6 +76,7 @@ public class MainLayouts {
             ParallelGroup ph1 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
             ParallelGroup ph2 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
             ParallelGroup ph3 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph4 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
             //+++++++++++++++++++++++++++++++++++++++++
             int limit = 3;
             sh.addGroup(ph1);
@@ -85,13 +86,19 @@ public class MainLayouts {
             }
             sh.addGroup(ph2);
             for (int a = 0; a < limit; a++) {
-                  ph2.addComponent(DATA.tfs[a], 60, 150, 300);
+                  ph2.addComponent(DATA.tfs[a], 20, 90, 220);
                   ph2.addComponent(DATA.lsts[a], 60, 150, 300);
             }
             sh.addGroup(ph3);
             for (int a = 0; a < limit; a++) {
-                  ph3.addComponent(DATA.btns[a]);
+                  ph3.addComponent(DATA.cbs[a], 40, 40, 40);
                   ph3.addGap(gw);
+            }
+            
+            sh.addGroup(ph4);
+            for (int a = 0; a < limit; a++) {
+                  ph4.addComponent(DATA.btns[a]);
+                  ph4.addGap(gw);
             }
 
             for (int a = 0; a < limit; a++) {
@@ -100,6 +107,7 @@ public class MainLayouts {
 
                   pv1.addComponent(DATA.lbs[a]);
                   pv1.addComponent(DATA.tfs[a]);
+                  pv1.addComponent(DATA.cbs[a]);
                   pv1.addComponent(DATA.btns[a]);
 
                   ParallelGroup pv2 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
@@ -107,6 +115,7 @@ public class MainLayouts {
 
                   pv2.addGap(0);
                   pv2.addComponent(DATA.lsts[a]);
+                  pv2.addGap(0);
                   pv2.addGap(0);
             }
       }
@@ -407,6 +416,9 @@ public class MainLayouts {
                   }
                   DATA.lsts[a] = new JList(listT);
                   DATA.lsts[a].setName("LIST_" + (a + 1));
+                  
+                  DATA.cbs[a] = new JComboBox();
+                  DATA.cbs[a].setName("CB_" + (a + 1));
 
                   DATA.btns[a] = new JButton("BTN_" + (a + 1));
                   DATA.btns[a].setName("BTN_" + (a + 1));
