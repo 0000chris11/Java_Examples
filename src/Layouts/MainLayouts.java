@@ -57,26 +57,32 @@ public class MainLayouts {
 
       }
 
-      private void groupLayoutConfig(JComponent JPS) {
+      private void groupLayoutMain(JComponent JPS) {
             GroupLayout groupl = new GroupLayout(JPS);
             JPS.setLayout(groupl);
-            groupl.setAutoCreateGaps(true);
-            groupl.setAutoCreateContainerGaps(true);
-            groupl.setHonorsVisibility(true);
+
+            //groupLayoutFirstEX(groupl);
+            groupLayoutEX_H(groupl);
+      }
+
+      private void groupLayoutFirstEX(GroupLayout layout) {
+            layout.setAutoCreateGaps(true);
+            layout.setAutoCreateContainerGaps(true);
+            layout.setHonorsVisibility(true);
             //++++++++++++++++++++++++++++++++++
             int gw = DATA.lbs[0].getPreferredSize().width;
             int gh = DATA.lsts[0].getPreferredSize().height;
             //++++++++++++++++++++++++++++++++++
-            SequentialGroup sh = groupl.createSequentialGroup();
-            SequentialGroup sv = groupl.createSequentialGroup();
+            SequentialGroup sh = layout.createSequentialGroup();
+            SequentialGroup sv = layout.createSequentialGroup();
 
-            groupl.setHorizontalGroup(sh);
-            groupl.setVerticalGroup(sv);
+            layout.setHorizontalGroup(sh);
+            layout.setVerticalGroup(sv);
 
-            ParallelGroup ph1 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
-            ParallelGroup ph2 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
-            ParallelGroup ph3 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
-            ParallelGroup ph4 = groupl.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph1 = layout.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph2 = layout.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph3 = layout.createParallelGroup(GroupLayout.Alignment.LEADING);
+            ParallelGroup ph4 = layout.createParallelGroup(GroupLayout.Alignment.LEADING);
             //+++++++++++++++++++++++++++++++++++++++++
             int limit = 3;
             sh.addGroup(ph1);
@@ -94,7 +100,7 @@ public class MainLayouts {
                   ph3.addComponent(DATA.cbs[a], 40, 40, 40);
                   ph3.addGap(gw);
             }
-            
+
             sh.addGroup(ph4);
             for (int a = 0; a < limit; a++) {
                   ph4.addComponent(DATA.btns[a]);
@@ -102,7 +108,7 @@ public class MainLayouts {
             }
 
             for (int a = 0; a < limit; a++) {
-                  ParallelGroup pv1 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+                  ParallelGroup pv1 = layout.createParallelGroup(GroupLayout.Alignment.BASELINE);
                   sv.addGroup(pv1);
 
                   pv1.addComponent(DATA.lbs[a]);
@@ -110,7 +116,7 @@ public class MainLayouts {
                   pv1.addComponent(DATA.cbs[a]);
                   pv1.addComponent(DATA.btns[a]);
 
-                  ParallelGroup pv2 = groupl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+                  ParallelGroup pv2 = layout.createParallelGroup(GroupLayout.Alignment.BASELINE);
                   sv.addGroup(pv2);
 
                   pv2.addGap(0);
@@ -118,6 +124,123 @@ public class MainLayouts {
                   pv2.addGap(0);
                   pv2.addGap(0);
             }
+      }
+
+      private void groupLayoutConfigH(GroupLayout layout) {
+            //HORIZONTAL GROUP (ParallelGroup)
+            //1 Group (SequentialGroup)
+            //1.1 Container Gap
+            //1.2 Group (ParallelGroup false)
+            //1.2.1 Group (SequentialGroup)
+            //1.2.1.1 LB [0]
+            //1.2.1.2 PREF GAP (RELATED)
+            //1.2.1.3 Group (ParallelGroup false)
+            //1.2.1.3.1 Group (Sequential)
+            //1.2.1.3.1.1 TF [0] (PREF, 100, PREF)
+            //1.2.1.3.1.2 PREF GAP (RELATED)
+            //1.2.1.3.1.3 CB [0] (PREF, DEF, PREF)
+            //1.2.1.3.2 LST [0]
+            //1.2.2 Group (Sequential)
+            //1.2.2.1 LB [1]
+            //1.2.2.2 PREF GAP (RELATED)
+            //1.2.2.3 TF [1]
+            //1.2.2.4 PREF GAP (RELATED)
+            //1.2.2.5 CB [1] (PREF, DEF, PREF)
+            //1.3 PREF GAP (RELATED)
+            //1.4 Group (Parallel LEADING)
+            //1.4.1 BTN [0]
+            //1.4.2 BTN [1]
+            //1.5 Container Gap (106, Shor-MAX)
+
+            layout.setHorizontalGroup(
+                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(DATA.lbs[0])
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                            .addGroup(layout.createSequentialGroup()
+                                                                    .addComponent(DATA.tfs[0], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                    .addComponent(DATA.cbs[0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                            .addComponent(DATA.lsts[0])))
+                                            .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(DATA.lbs[0])
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DATA.tfs[1])
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DATA.cbs[1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                            .addComponent(DATA.btns[0])
+                                            .addComponent(DATA.btns[1]))
+                                    .addContainerGap(106, Short.MAX_VALUE))
+            );
+      }
+
+      private void groupLayoutEX_H(GroupLayout layout) {
+            //VERTICAL GROUP (Parallel LEADING)
+
+            int LST_PREF = 200;
+            int TF_PREF = 150;
+            int CB_PREF = 50;
+
+            layout.setHorizontalGroup(
+                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, true)
+                                            .addComponent(DATA.lbs[0])
+                                            .addGap(0)
+                                            .addComponent(DATA.lbs[1]))
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, true)
+                                            .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(DATA.tfs[0], TF_PREF, TF_PREF, Short.MAX_VALUE)
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DATA.cbs[0], CB_PREF, CB_PREF, CB_PREF))
+                                            .addComponent(DATA.lsts[0], LST_PREF, LST_PREF, Short.MAX_VALUE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(DATA.tfs[1], TF_PREF, TF_PREF, Short.MAX_VALUE)
+                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DATA.cbs[1], CB_PREF, CB_PREF, CB_PREF)))
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, true)
+                                            .addComponent(DATA.btns[0])
+                                            .addGap(0)
+                                            .addComponent(DATA.btns[1]))
+                                    .addContainerGap()));
+
+            layout.setVerticalGroup(
+                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(DATA.lbs[0])
+                                            
+                                            .addComponent(DATA.tfs[0])
+                                            
+                                            .addComponent(DATA.cbs[0])
+                                            
+                                            .addComponent(DATA.btns[0]))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(DATA.lsts[0])
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(DATA.lbs[1])
+                                            
+                                            .addComponent(DATA.tfs[1])
+                                            
+                                            .addComponent(DATA.cbs[1])
+                                            
+                                            .addComponent(DATA.btns[1]))
+                                    .addContainerGap()));
+      }
+
+      private void groupLayoutConfigV(GroupLayout layout) {
+            layout.setHorizontalGroup(
+                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()));
       }
 
       private void gridBagLayout(JComponent JPS) {
@@ -142,12 +265,6 @@ public class MainLayouts {
             c.gridx = 0;
             c.gridy = 1;
             JPS.add(new JButton("Button 4"), c);
-      }
-
-      private void groupLayoutConfig2(GroupLayout layout) {
-            layout.setHorizontalGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING))
-            );
       }
 
       private void setPanelsLayouts() {
@@ -206,7 +323,7 @@ public class MainLayouts {
             JPS[4].setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
             gridBagLayout(JPS[5]);
             JPS[6].setLayout(new GridLayout(2, 2));
-            groupLayoutConfig(JPS[7]);
+            groupLayoutMain(JPS[7]);
             JPS[8].setLayout(new MigLayout());
             JPS[9].setLayout(new OverlayLayout(JPS[9]));
             JPS[10].setLayout(new SpringLayout());
@@ -343,7 +460,7 @@ public class MainLayouts {
                         for (int a = 0; a < JP.getComponentCount(); a++) {
                               GridBagLayout gbl = (GridBagLayout) JP.getLayout();
                               GridBagConstraints c = gbl.getConstraints(JP.getComponent(a));
-                              
+
                               System.out.println(((JButton) JP.getComponent(a)).getText());
                               System.out.println("\tanchor: " + c.anchor);
                               System.out.println("\tfill: " + c.fill);
@@ -416,7 +533,7 @@ public class MainLayouts {
                   }
                   DATA.lsts[a] = new JList(listT);
                   DATA.lsts[a].setName("LIST_" + (a + 1));
-                  
+
                   DATA.cbs[a] = new JComboBox();
                   DATA.cbs[a].setName("CB_" + (a + 1));
 
