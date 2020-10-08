@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -231,57 +232,51 @@ public class MainLayouts {
                                             .addComponent(DATA.btns[1]))));
       }
 
-      private void groupLayoutEX_H2(GroupLayout layout, int limit) {
-            layout.setAutoCreateGaps(true);
-            layout.setAutoCreateContainerGaps(true);
+      private void groupLayoutEX_H2(GroupLayout gl, int limit) {
+            gl.setAutoCreateGaps(true);
+            gl.setAutoCreateContainerGaps(true);
 
-            ParallelGroup pgh1 = layout.createParallelGroup(GroupLayout.Alignment.LEADING, true);
-            ParallelGroup pgh2 = layout.createParallelGroup(GroupLayout.Alignment.LEADING, true);
-            ParallelGroup pgh3 = layout.createParallelGroup(GroupLayout.Alignment.LEADING, true);
+            ParallelGroup pgh1 = gl.createParallelGroup(GroupLayout.Alignment.LEADING, true);
+            ParallelGroup pgh2 = gl.createParallelGroup(GroupLayout.Alignment.LEADING, true);
+            ParallelGroup pgh3 = gl.createParallelGroup(GroupLayout.Alignment.LEADING, true);
 
-            SequentialGroup sgv1 = layout.createSequentialGroup();
+            SequentialGroup sgv1 = gl.createSequentialGroup();
             //SequentialGroup sgh1 = layout.createSequentialGroup();
             int LST_PREF = 200;
             int TF_PREF = 150;
-            int CB_PREF = 50;
+            int CON_PREF = 50;
 
             for (int a = 0; a < limit; a++) {
                   pgh1.addComponent(DATA.lbs[a]);
                   pgh1.addGap(0);
                   //++++++++++++++++++++++++++
-                  pgh2.addGroup(layout.createSequentialGroup()
+                  pgh2.addGroup(gl.createSequentialGroup()
                           .addComponent(DATA.tfs[a], TF_PREF, TF_PREF, Short.MAX_VALUE)
                           .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                          .addComponent(DATA.cbs[a], CB_PREF, CB_PREF, CB_PREF));
+                          .addComponent(DATA.cbs[a], CON_PREF, CON_PREF, CON_PREF));
                   pgh2.addComponent(DATA.lsts[a], LST_PREF, LST_PREF, Short.MAX_VALUE);
                   //++++++++++++++++++++++++++
                   pgh3.addComponent(DATA.btns[a]);
                   pgh3.addGap(0);
                   //=========================================
-                  /*
-                  if (a == 0) {
-                        sgv1.addContainerGap();
-                  }
-                   */
-                  sgv1.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                  sgv1.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                           .addComponent(DATA.lbs[a])
                           .addComponent(DATA.tfs[a])
                           .addComponent(DATA.cbs[a])
                           .addComponent(DATA.btns[a]));
-                  //sgv1.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED);
                   sgv1.addComponent(DATA.lsts[a]);
             }
             //++++++++++++++++++++++++++++++++
             //++++++++++++++++++++++++++++++++
-            layout.setHorizontalGroup(
-                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+            gl.setHorizontalGroup(
+                    gl.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(gl.createSequentialGroup()
                                     .addGroup(pgh1)
                                     .addGroup(pgh2)
                                     .addGroup(pgh3)));
 
-            layout.setVerticalGroup(
-                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            gl.setVerticalGroup(
+                    gl.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(sgv1));
       }
 
@@ -580,19 +575,25 @@ public class MainLayouts {
 
       private void setDATAComponents() {
             String[] listT = new String[5];
+            Font f = new Font("Dialog", Font.PLAIN, 24);
             for (int a = 0; a < 10; a++) {
                   DATA.lbs[a] = new JLabel("LB_" + (a + 1));
                   DATA.lbs[a].setName("LB_" + (a + 1));
                   DATA.lbs[a].setForeground(Color.WHITE);
+                  DATA.lbs[a].setFont(f);
 
                   DATA.tfs[a] = new JTextField("TF_" + (a + 1));
                   DATA.tfs[a].setName("TF_" + (a + 1));
+                  DATA.tfs[a].setBackground(Color.DARK_GRAY);
+                  //DATA.tfs[a].setSize(, c1i);
 
                   for (int b = 0; b < 5; b++) {
                         listT[b] = "Element " + (b + 1);
                   }
                   DATA.lsts[a] = new JList(listT);
                   DATA.lsts[a].setName("LIST_" + (a + 1));
+                  DATA.lsts[a].setBackground(Color.DARK_GRAY);
+                  DATA.lsts[a].setForeground(Color.WHITE);
 
                   DATA.cbs[a] = new JComboBox();
                   DATA.cbs[a].setName("CB_" + (a + 1));
