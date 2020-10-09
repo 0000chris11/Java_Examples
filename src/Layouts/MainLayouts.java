@@ -278,6 +278,8 @@ public class MainLayouts {
             gl.setVerticalGroup(
                     gl.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(sgv1));
+            
+            
       }
 
       private void groupLayoutConfigV(GroupLayout layout) {
