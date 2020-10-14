@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\C0F\\Programming\\JAVA\\javaclasses\\coffiClasses.jar"
+    ]
+}

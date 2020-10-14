@@ -5,9 +5,6 @@
  */
 package AAMethods;
 
-import java.awt.event.KeyEvent;
-import java.util.EventObject;
-
 /**
  *
  * @author Christopher

@@ -1,7 +1,5 @@
 package Layouts;
 
-import AAMethods.MM;
-import com.cofii.myClasses.VT;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -17,12 +15,31 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Arrays;
-import javax.swing.*;
+
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+import javax.swing.LayoutStyle;
+import javax.swing.OverlayLayout;
+import javax.swing.SpringLayout;
+import javax.swing.WindowConstants;
+
+import AAMethods.MM;
 import net.miginfocom.swing.MigLayout;
 
+import com.cofii.myClasses.VT;
 /**
  *
  * @author Christopher
@@ -56,7 +73,7 @@ public class MainLayouts {
 
       //+++++++++++++++++++++++++++++++++++
       private void cardLayoutConfig(JComponent JPS) {
-
+            //FOR LATER
       }
 
       private void groupLayoutMain(JComponent JPS) {
@@ -64,7 +81,7 @@ public class MainLayouts {
             JPS.setLayout(groupl);
 
             //groupLayoutFirstEX(groupl);
-            groupLayoutEX_H2(groupl, 3);
+            groupLayoutEXH2(groupl, 3);
       }
 
       private void groupLayoutFirstEX(GroupLayout layout) {
@@ -73,7 +90,7 @@ public class MainLayouts {
             layout.setHonorsVisibility(true);
             //++++++++++++++++++++++++++++++++++
             int gw = DATA.lbs[0].getPreferredSize().width;
-            int gh = DATA.lsts[0].getPreferredSize().height;
+
             //++++++++++++++++++++++++++++++++++
             SequentialGroup sh = layout.createSequentialGroup();
             SequentialGroup sv = layout.createSequentialGroup();
@@ -232,7 +249,7 @@ public class MainLayouts {
                                             .addComponent(DATA.btns[1]))));
       }
 
-      private void groupLayoutEX_H2(GroupLayout gl, int limit) {
+      private void groupLayoutEXH2(GroupLayout gl, int limit) {
             gl.setAutoCreateGaps(true);
             gl.setAutoCreateContainerGaps(true);
 
@@ -241,7 +258,6 @@ public class MainLayouts {
             ParallelGroup pgh3 = gl.createParallelGroup(GroupLayout.Alignment.LEADING, true);
 
             SequentialGroup sgv1 = gl.createSequentialGroup();
-            //SequentialGroup sgh1 = layout.createSequentialGroup();
             int LST_PREF = 200;
             int TF_PREF = 150;
             int CON_PREF = 50;
@@ -282,12 +298,6 @@ public class MainLayouts {
             
       }
 
-      private void groupLayoutConfigV(GroupLayout layout) {
-            layout.setHorizontalGroup(
-                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()));
-      }
-
       private void gridBagLayout(JComponent JPS) {
             GridBagLayout gbl = new GridBagLayout();
             JPS.setLayout(gbl);
@@ -316,7 +326,7 @@ public class MainLayouts {
             MouseListener ml = new MouseListener() {
                   @Override
                   public void mouseClicked(MouseEvent e) {
-
+                        throw new UnsupportedOperationException();
                   }
 
                   @Override
@@ -575,7 +585,7 @@ public class MainLayouts {
             jc.setName(name);
       }
 
-      private void setDATAComponents() {
+      private static void setDATAComponents() {
             String[] listT = new String[5];
             Font f = new Font("Dialog", Font.PLAIN, 24);
             for (int a = 0; a < 10; a++) {
