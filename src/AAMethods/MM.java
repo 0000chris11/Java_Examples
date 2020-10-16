@@ -33,6 +33,10 @@ import javax.swing.tree.TreePath;
  */
 public class MM {
 
+      private MM(){
+            super();
+            throw new IllegalStateException("PRIVATE CONSTRUCTOR");
+      }
       //++++++++++++++++++++++++++++++++++++++++++
       public static void setComponentFitOnJFrame(JComponent jc, JFrame jf) {
             jc.setBounds(2, 2,
@@ -53,8 +57,6 @@ public class MM {
             g2.drawImage(ii.getImage(), 0, 0, 225, 225, null);
 
             ImageIcon icon2 = new ImageIcon(bimage);
-
-            //System.out.println("------------------------Icon2 Width: " + icon2.getIconWidth() + "\tHeight: " + icon2.getIconHeight());
             return icon2;
             //++++++++++++++++++++++++++++++++++++++++++++++++++
       }
