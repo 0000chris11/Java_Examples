@@ -28,7 +28,7 @@ public class DoubleColor {
             float gHigh = 0.0f;
             float bHigh = 0.0f;
 
-            float prop = (15 - vLow) / (vHigh - vLow);
+            //float prop = (15 - vLow) / (vHigh - vLow);
             //++++++++++++++++++++++++++++++++++
             g2.setColor(Color.red);
             g2.fillRect(2, 2, 400, 400);

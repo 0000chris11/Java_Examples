@@ -46,10 +46,10 @@ import com.cofii.myClasses.VT;
  */
 public class MainLayouts {
 
-      VT vtM = new VT();
-      VT vtGL = new VT();
+      VT vtM = new VT(BoxLayout.X_AXIS);
+      VT vtGL = new VT(BoxLayout.X_AXIS);
       int c1i = 0;
-      VT vtGBL = new VT();
+      VT vtGBL = new VT(BoxLayout.X_AXIS);
 
       JFrame JF = new JFrame();
       JPanel JP = new JPanel();
@@ -585,7 +585,7 @@ public class MainLayouts {
             jc.setName(name);
       }
 
-      private static void setDATAComponents() {
+      private void setDATAComponents() {
             String[] listT = new String[5];
             Font f = new Font("Dialog", Font.PLAIN, 24);
             for (int a = 0; a < 10; a++) {

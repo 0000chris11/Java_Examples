@@ -72,7 +72,7 @@ public class VT {
                         System.out.println("\n" + btns[2].getText());
                         FontMetrics_ex.JBTN.setBorder(
                                 BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-                        FontMetrics_ex.JP.add();
+                        //FontMetrics_ex.JP.add();
                   }
             }
 
