@@ -1,5 +1,5 @@
 
-package Basic;
+package basic;
 
 import java.awt.Color;
 import java.awt.Component;

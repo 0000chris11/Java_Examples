@@ -1,4 +1,4 @@
-package Basic;
+package basic;
 
 
 public class If_statement {

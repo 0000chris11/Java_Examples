@@ -1,5 +1,5 @@
 
-package Basic;
+package basic;
 
 //import Java.lang.Integer;
 

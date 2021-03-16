@@ -37,19 +37,14 @@ import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
 
 import AAMethods.MM;
-//import net.miginfocom.swing.MigLayout;
 
-import com.cofii.myClasses.VT;
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class MainLayouts {
 
-      VT vtM = new VT(BoxLayout.X_AXIS);
-      VT vtGL = new VT(BoxLayout.X_AXIS);
-      int c1i = 0;
-      VT vtGBL = new VT(BoxLayout.X_AXIS);
+      private DATA data = DATA.getInstance();
 
       JFrame JF = new JFrame();
       JPanel JP = new JPanel();
@@ -69,7 +64,7 @@ public class MainLayouts {
             "OverLayout",
             "SpringLayout"};
 
-      static JPanel[] JPS = new JPanel[txs.length];
+      JPanel[] JPS = new JPanel[txs.length];
 
       //+++++++++++++++++++++++++++++++++++
       private void cardLayoutConfig(JComponent JPS) {
@@ -89,7 +84,7 @@ public class MainLayouts {
             layout.setAutoCreateContainerGaps(true);
             layout.setHonorsVisibility(true);
             //++++++++++++++++++++++++++++++++++
-            int gw = DATA.lbs[0].getPreferredSize().width;
+            int gw = data.lbs[0].getPreferredSize().width;
 
             //++++++++++++++++++++++++++++++++++
             SequentialGroup sh = layout.createSequentialGroup();
@@ -106,23 +101,23 @@ public class MainLayouts {
             int limit = 3;
             sh.addGroup(ph1);
             for (int a = 0; a < limit; a++) {
-                  ph1.addComponent(DATA.lbs[a]);
+                  ph1.addComponent(data.lbs[a]);
                   ph1.addGap(gw);
             }
             sh.addGroup(ph2);
             for (int a = 0; a < limit; a++) {
-                  ph2.addComponent(DATA.tfs[a], 20, 90, 220);
-                  ph2.addComponent(DATA.lsts[a], 60, 150, 300);
+                  ph2.addComponent(data.tfs[a], 20, 90, 220);
+                  ph2.addComponent(data.lsts[a], 60, 150, 300);
             }
             sh.addGroup(ph3);
             for (int a = 0; a < limit; a++) {
-                  ph3.addComponent(DATA.cbs[a], 40, 40, 40);
+                  ph3.addComponent(data.cbs[a], 40, 40, 40);
                   ph3.addGap(gw);
             }
 
             sh.addGroup(ph4);
             for (int a = 0; a < limit; a++) {
-                  ph4.addComponent(DATA.btns[a]);
+                  ph4.addComponent(data.btns[a]);
                   ph4.addGap(gw);
             }
 
@@ -130,16 +125,16 @@ public class MainLayouts {
                   ParallelGroup pv1 = layout.createParallelGroup(GroupLayout.Alignment.BASELINE);
                   sv.addGroup(pv1);
 
-                  pv1.addComponent(DATA.lbs[a]);
-                  pv1.addComponent(DATA.tfs[a]);
-                  pv1.addComponent(DATA.cbs[a]);
-                  pv1.addComponent(DATA.btns[a]);
+                  pv1.addComponent(data.lbs[a]);
+                  pv1.addComponent(data.tfs[a]);
+                  pv1.addComponent(data.cbs[a]);
+                  pv1.addComponent(data.btns[a]);
 
                   ParallelGroup pv2 = layout.createParallelGroup(GroupLayout.Alignment.BASELINE);
                   sv.addGroup(pv2);
 
                   pv2.addGap(0);
-                  pv2.addComponent(DATA.lsts[a]);
+                  pv2.addComponent(data.lsts[a]);
                   pv2.addGap(0);
                   pv2.addGap(0);
             }
@@ -177,24 +172,24 @@ public class MainLayouts {
                                     .addContainerGap()
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(DATA.lbs[0])
+                                                    .addComponent(data.lbs[0])
                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                             .addGroup(layout.createSequentialGroup()
-                                                                    .addComponent(DATA.tfs[0], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(data.tfs[0], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                    .addComponent(DATA.cbs[0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                                            .addComponent(DATA.lsts[0])))
+                                                                    .addComponent(data.cbs[0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                            .addComponent(data.lsts[0])))
                                             .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(DATA.lbs[0])
+                                                    .addComponent(data.lbs[0])
                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(DATA.tfs[1])
+                                                    .addComponent(data.tfs[1])
                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(DATA.cbs[1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(data.cbs[1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addComponent(DATA.btns[0])
-                                            .addComponent(DATA.btns[1]))
+                                            .addComponent(data.btns[0])
+                                            .addComponent(data.btns[1]))
                                     .addContainerGap(106, Short.MAX_VALUE))
             );
       }
@@ -212,41 +207,41 @@ public class MainLayouts {
                             .addGroup(layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, true)
-                                            .addComponent(DATA.lbs[0])
+                                            .addComponent(data.lbs[0])
                                             .addGap(0)
-                                            .addComponent(DATA.lbs[1]))
+                                            .addComponent(data.lbs[1]))
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, true)
                                             .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(DATA.tfs[0], TF_PREF, TF_PREF, Short.MAX_VALUE)
+                                                    .addComponent(data.tfs[0], TF_PREF, TF_PREF, Short.MAX_VALUE)
                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(DATA.cbs[0], CB_PREF, CB_PREF, CB_PREF))
-                                            .addComponent(DATA.lsts[0], LST_PREF, LST_PREF, Short.MAX_VALUE)
+                                                    .addComponent(data.cbs[0], CB_PREF, CB_PREF, CB_PREF))
+                                            .addComponent(data.lsts[0], LST_PREF, LST_PREF, Short.MAX_VALUE)
                                             .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(DATA.tfs[1], TF_PREF, TF_PREF, Short.MAX_VALUE)
+                                                    .addComponent(data.tfs[1], TF_PREF, TF_PREF, Short.MAX_VALUE)
                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(DATA.cbs[1], CB_PREF, CB_PREF, CB_PREF)))
+                                                    .addComponent(data.cbs[1], CB_PREF, CB_PREF, CB_PREF)))
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, true)
-                                            .addComponent(DATA.btns[0])
+                                            .addComponent(data.btns[0])
                                             .addGap(0)
-                                            .addComponent(DATA.btns[1]))));
+                                            .addComponent(data.btns[1]))));
 
             layout.setVerticalGroup(
                     layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(DATA.lbs[0])
-                                            .addComponent(DATA.tfs[0])
-                                            .addComponent(DATA.cbs[0])
-                                            .addComponent(DATA.btns[0]))
+                                            .addComponent(data.lbs[0])
+                                            .addComponent(data.tfs[0])
+                                            .addComponent(data.cbs[0])
+                                            .addComponent(data.btns[0]))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(DATA.lsts[0])
+                                    .addComponent(data.lsts[0])
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(DATA.lbs[1])
-                                            .addComponent(DATA.tfs[1])
-                                            .addComponent(DATA.cbs[1])
-                                            .addComponent(DATA.btns[1]))));
+                                            .addComponent(data.lbs[1])
+                                            .addComponent(data.tfs[1])
+                                            .addComponent(data.cbs[1])
+                                            .addComponent(data.btns[1]))));
       }
 
       private void groupLayoutEXH2(GroupLayout gl, int limit) {
@@ -263,24 +258,24 @@ public class MainLayouts {
             int CON_PREF = 50;
 
             for (int a = 0; a < limit; a++) {
-                  pgh1.addComponent(DATA.lbs[a]);
+                  pgh1.addComponent(data.lbs[a]);
                   pgh1.addGap(0);
                   //++++++++++++++++++++++++++
                   pgh2.addGroup(gl.createSequentialGroup()
-                          .addComponent(DATA.tfs[a], TF_PREF, TF_PREF, Short.MAX_VALUE)
+                          .addComponent(data.tfs[a], TF_PREF, TF_PREF, Short.MAX_VALUE)
                           .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                          .addComponent(DATA.cbs[a], CON_PREF, CON_PREF, CON_PREF));
-                  pgh2.addComponent(DATA.lsts[a], LST_PREF, LST_PREF, Short.MAX_VALUE);
+                          .addComponent(data.cbs[a], CON_PREF, CON_PREF, CON_PREF));
+                  pgh2.addComponent(data.lsts[a], LST_PREF, LST_PREF, Short.MAX_VALUE);
                   //++++++++++++++++++++++++++
-                  pgh3.addComponent(DATA.btns[a]);
+                  pgh3.addComponent(data.btns[a]);
                   pgh3.addGap(0);
                   //=========================================
                   sgv1.addGroup(gl.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                          .addComponent(DATA.lbs[a])
-                          .addComponent(DATA.tfs[a])
-                          .addComponent(DATA.cbs[a])
-                          .addComponent(DATA.btns[a]));
-                  sgv1.addComponent(DATA.lsts[a]);
+                          .addComponent(data.lbs[a])
+                          .addComponent(data.tfs[a])
+                          .addComponent(data.cbs[a])
+                          .addComponent(data.btns[a]));
+                  sgv1.addComponent(data.lsts[a]);
             }
             //++++++++++++++++++++++++++++++++
             //++++++++++++++++++++++++++++++++
@@ -350,17 +345,17 @@ public class MainLayouts {
 
                   @Override
                   public void mouseReleased(MouseEvent e) {
-
+                        throw new UnsupportedOperationException();
                   }
 
                   @Override
                   public void mouseEntered(MouseEvent e) {
-
+                        throw new UnsupportedOperationException();
                   }
 
                   @Override
                   public void mouseExited(MouseEvent e) {
-
+                        throw new UnsupportedOperationException();
                   }
 
             };
@@ -385,201 +380,6 @@ public class MainLayouts {
       }
 
       //+++++++++++++++++++++++++++++++++++
-      private void VTConfig() {
-            JComboBox cb = new JComboBox(txs);
-            JButton btn1 = new JButton("ADD");
-            JButton btn2 = new JButton("REPAINT");
-            JButton btn3 = new JButton("COMPONENTS");
-            JButton btn4 = new JButton("LAYOUT");
-            JSeparator sp = new JSeparator(JSeparator.VERTICAL);
-
-            vtM.add(cb);
-            vtM.add(btn1);
-            vtM.add(btn2);
-            vtM.add(btn3);
-            vtM.add(btn4);
-            vtM.add(sp);
-
-            ItemListener il = new ItemListener() {
-                  @Override
-                  public void itemStateChanged(ItemEvent e) {
-                        CardLayout cl = (CardLayout) JP.getLayout();
-                        String selected = cb.getSelectedItem().toString();
-                        cl.show(JP, selected);
-                        //+++++++++++++++++++
-                        //vtGL.dispose();
-                        vtGBL.dispose();
-                        if (selected.equals("GroupLayout")
-                                && c1i == 0) {
-                              c1i++;
-                              VT_GLConfig();
-                        } else if (selected.equals("GridBagLayout")) {
-                              VT_GBLConfig(cb);
-                        }
-                  }
-
-            };
-            cb.addItemListener(il);
-
-            ActionListener al = new ActionListener() {
-                  @Override
-                  public void actionPerformed(ActionEvent e) {
-                        System.out.println("LISTEN!");
-
-                        for (int a = 0; a < txs.length; a++) {
-                              String item = cb.getSelectedItem().toString();
-                              if (item.equals(txs[a])) {
-                                    if (e.getActionCommand().equals("ADD")) {
-                                          System.out.println("\t" + txs[a] + ": button added");
-                                          JButton btn = new JButton("H");
-                                          //btn.setBounds(0, 0, 60, 30);
-                                          btn.setSize(60, 30);
-                                          JPS[a].add(btn);
-                                          JPS[a].repaint();
-                                    } else if (e.getActionCommand().equals("REPAINT")) {
-                                          System.out.println("\t" + txs[a] + ": repainting");
-                                          JPS[a].repaint();
-                                    } else if (e.getActionCommand().equals("COMPONENTS")) {
-                                          System.out.println("\t" + txs[a]);
-                                          int count = JPS[a].getComponentCount();
-                                          if (count == 0) {
-                                                System.out.println("\t\tNO COMPONENTS");
-                                          } else {
-                                                for (int b = 0; b < count; b++) {
-                                                      System.out.println("\t\t" + (b + 1) + ": "
-                                                              + JPS[a].getComponent(b).getClass().toString());
-                                                }
-                                          }
-                                    } else if (e.getActionCommand().equals("LAYOUT")) {
-                                          try {
-                                                System.out.println("\t" + txs[a] + ": " + JPS[a].getLayout().toString());
-                                          } catch (NullPointerException ex) {
-                                                System.out.println("\t" + txs[a] + ": NULL LAYOUT");
-                                          }
-                                    }
-                              }
-                        }
-
-                  }
-
-            };
-            btn1.addActionListener(al);
-            btn2.addActionListener(al);
-            btn3.addActionListener(al);
-            btn4.addActionListener(al);
-            
-            vtM.pack();
-            vtM.setVisible(true);
-            vtM.setAlwaysOnTop(true);
-      }
-
-      private void VT_GLConfig() {
-            System.out.println("Creating VT_GLConfig");
-            JComboBox cb = new JComboBox(comps);
-            JToggleButton tg = new JToggleButton("VISIBLE");
-
-            vtGL.add(cb);
-            vtGL.add(tg);
-
-            ItemListener il = new ItemListener() {
-                  @Override
-                  public void itemStateChanged(ItemEvent e) {
-                        System.out.println("VISIBLE ?: " + txs.length);
-                        //System.out.println("");
-                        //System.out.println("\tComponents count: "
-                        //      + JPS[a].getComponentCount());
-                        //System.out.println("\tcomps lenght: " + comps.length);
-                        for (int b = 0; b < JPS[7].getComponentCount(); b++) {
-                              for (int c = 0; c < cb.getItemCount(); c++) {
-                                    if (JPS[7].getComponent(b).getName().equals(
-                                            cb.getSelectedItem().toString())) {
-                                          System.out.println("\t\t"
-                                                  + JPS[7].getComponent(b).getName());
-                                          if (tg.isSelected()) {
-                                                tg.setText("NOT VISIBLE");
-                                                JPS[7].getComponent(b).setVisible(false);
-                                          } else {
-                                                tg.setText("VISIBLE");
-                                                JPS[7].getComponent(b).setVisible(true);
-                                          }
-                                    }
-                              }
-                        }
-
-                  }
-
-            };
-            tg.addItemListener(il);
-
-            vtGL.pack();
-            vtGL.setVisible(true);
-            vtGL.setAlwaysOnTop(true);
-      }
-
-      private void VT_GBLConfig(JComboBox cb) {
-            JButton btn = new JButton("getConstraints");
-            vtGBL.add(btn);
-            ActionListener al = new ActionListener() {
-                  @Override
-                  public void actionPerformed(ActionEvent e) {
-                        JPanel JP = JPS[cb.getSelectedIndex()];
-                        for (int a = 0; a < JP.getComponentCount(); a++) {
-                              GridBagLayout gbl = (GridBagLayout) JP.getLayout();
-                              GridBagConstraints c = gbl.getConstraints(JP.getComponent(a));
-
-                              System.out.println(((JButton) JP.getComponent(a)).getText());
-                              System.out.println("\tanchor: " + c.anchor);
-                              System.out.println("\tfill: " + c.fill);
-                              System.out.println("\tgridheight: " + c.gridheight);
-                              System.out.println("\tgridwidth: " + c.gridwidth);
-                              System.out.println("\tgridx: " + c.gridx);
-                              System.out.println("\tgridy: " + c.gridy);
-                              System.out.println("\tinsets: " + c.insets);
-                              System.out.println("\tipadx: " + c.ipadx);
-                              System.out.println("\tipady: " + c.ipady);
-                              System.out.println("\tweightx: " + c.weightx);
-                              System.out.println("\tweighty: " + c.weighty);
-                              //lookupConstraints()
-
-                        }
-
-                  }
-
-            };
-            btn.addActionListener(al);
-            vtGBL.pack();
-            vtGBL.setVisible(true);
-            /*
-            lb_Title.setBorder(new EmptyBorder(2, 4, 0, 0));
-            Font F = UIManager.getFont("Label.font");
-            lb_Title.setFont(new Font(F.getName(), F.getStyle(), F.getSize() + 6));
-            lb_Title.setForeground(Color.WHITE);
-            
-            c.anchor = GridBagConstraints.PAGE_START;
-            c.fill = GridBagConstraints.BOTH;
-            //c.fill = GridBagConstraints.HORIZONTAL;
-            c.ipady = 30;
-            c.insets = new Insets(1, 2, 1, 1);
-            c.gridx = 0;
-            c.gridy = 0;
-            c.gridheight = 4;
-            c.weightx = 1;
-            c.weighty = 0;
-            JPN.add(lb_Title, c);
-
-            jps[0] = new JPanel();
-            jps[0].setBackground(Color.DARK_GRAY);
-            jps[0].setName("Options Panel");
-            c.anchor = GridBagConstraints.PAGE_START;
-            c.fill = GridBagConstraints.BOTH;
-            c.insets = new Insets(1, 2, 1, 1);
-            c.gridx = 0;
-            c.gridy = 4;
-            c.weightx = 1;
-            c.weighty = 1;
-            JPN.add(jps[0], c);
-             */
-      }
 
       private void setName(JComponent jc, String name) {
             jc.setName(name);
@@ -589,29 +389,28 @@ public class MainLayouts {
             String[] listT = new String[5];
             Font f = new Font("Dialog", Font.PLAIN, 24);
             for (int a = 0; a < 10; a++) {
-                  DATA.lbs[a] = new JLabel("LB_" + (a + 1));
-                  DATA.lbs[a].setName("LB_" + (a + 1));
-                  DATA.lbs[a].setForeground(Color.WHITE);
-                  DATA.lbs[a].setFont(f);
+                  data.lbs[a] = new JLabel("LB_" + (a + 1));
+                  data.lbs[a].setName("LB_" + (a + 1));
+                  data.lbs[a].setForeground(Color.WHITE);
+                  data.lbs[a].setFont(f);
 
-                  DATA.tfs[a] = new JTextField("TF_" + (a + 1));
-                  DATA.tfs[a].setName("TF_" + (a + 1));
-                  DATA.tfs[a].setBackground(Color.DARK_GRAY);
-                  //DATA.tfs[a].setSize(, c1i);
+                  data.tfs[a] = new JTextField("TF_" + (a + 1));
+                  data.tfs[a].setName("TF_" + (a + 1));
+                  data.tfs[a].setBackground(Color.DARK_GRAY);
 
                   for (int b = 0; b < 5; b++) {
                         listT[b] = "Element " + (b + 1);
                   }
-                  DATA.lsts[a] = new JList(listT);
-                  DATA.lsts[a].setName("LIST_" + (a + 1));
-                  DATA.lsts[a].setBackground(Color.DARK_GRAY);
-                  DATA.lsts[a].setForeground(Color.WHITE);
+                  data.lsts[a] = new JList(listT);
+                  data.lsts[a].setName("LIST_" + (a + 1));
+                  data.lsts[a].setBackground(Color.DARK_GRAY);
+                  data.lsts[a].setForeground(Color.WHITE);
 
-                  DATA.cbs[a] = new JComboBox();
-                  DATA.cbs[a].setName("CB_" + (a + 1));
+                  data.cbs[a] = new JComboBox();
+                  data.cbs[a].setName("CB_" + (a + 1));
 
-                  DATA.btns[a] = new JButton("BTN_" + (a + 1));
-                  DATA.btns[a].setName("BTN_" + (a + 1));
+                  data.btns[a] = new JButton("BTN_" + (a + 1));
+                  data.btns[a].setName("BTN_" + (a + 1));
             }
             setComponentsToString();
       }
@@ -619,10 +418,10 @@ public class MainLayouts {
       private void setComponentsToString() {
             ArrayList<String> list = new ArrayList<String>();
             for (int a = 0; a < 10; a++) {
-                  list.add(DATA.lbs[a].getName());
-                  list.add(DATA.tfs[a].getName());
-                  list.add(DATA.lsts[a].getName());
-                  list.add(DATA.btns[a].getName());
+                  list.add(data.lbs[a].getName());
+                  list.add(data.tfs[a].getName());
+                  list.add(data.lsts[a].getName());
+                  list.add(data.btns[a].getName());
             }
             comps = list.toArray(new String[list.size()]);
             //String[] fff = (String[]) list.toArray();
@@ -649,14 +448,11 @@ public class MainLayouts {
                   setName(JPS[a], ("JP_" + (a + 1)));
                   JP.add(JPS[a], txs[a]);
             }
-            VTConfig();
-            //VT_GLConfig();
             //+++++++++++++++++++++++
             JF.setVisible(true);
       }
 
       public static void main(String[] args) {
             new MainLayouts();
-            //new Second();
       }
 }

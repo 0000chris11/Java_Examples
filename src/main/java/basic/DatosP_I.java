@@ -1,4 +1,4 @@
-package Basic;
+package basic;
 
 import java.util.Scanner;
 public class DatosP_I {

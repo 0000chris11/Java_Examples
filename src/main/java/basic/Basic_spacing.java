@@ -1,4 +1,4 @@
-package Basic;
+package basic;
 
 
 public class Basic_spacing {

@@ -1,4 +1,4 @@
-package Basic;
+package basic;
 
 
 public class Method_with_many_Arguments {

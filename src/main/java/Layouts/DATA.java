@@ -13,14 +13,28 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class DATA {
-      
-      static JLabel[] lbs = new JLabel[10];
-      static JTextField[] tfs = new JTextField[10];
-      static JList[] lsts = new JList[10];
-      static JComboBox[] cbs = new JComboBox[10];
-      static JButton[] btns = new JButton[10];
-      
+
+      private static DATA instance;
+
+      JLabel[] lbs = new JLabel[10];
+      JTextField[] tfs = new JTextField[10];
+      JList[] lsts = new JList[10];
+      JComboBox[] cbs = new JComboBox[10];
+      JButton[] btns = new JButton[10];
+
+      public static DATA getInstance() {
+            if (instance == null) {
+                  return new DATA();
+            } else {
+                  return instance;
+            }
+      }
+
+      private DATA() {
+
+      }
+
 }

@@ -1,4 +1,4 @@
-package Basic;
+package basic;
 
 
 import java.util.Scanner;
@@ -15,5 +15,6 @@ public class Scanner_EJ {
             //2
             System.out.print(sc.nextLine());//Quick Way
 
+            sc.close();
       }
 }
