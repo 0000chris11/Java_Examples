@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ##############################
 ## Java
 ##############################
@@ -64,6 +65,47 @@ local.properties
 ##############################
 ## NetBeans
 ##############################
+=======
+#
+# Project specific excludes
+#
+
+tomcat
+
+#
+# Default excludes
+#
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+
+# Maven 
+target/
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# NetBeans specific
+>>>>>>> 1859932663c9183b495d90d9872d2e5ee3a9272b
 nbproject/private/
 build/
 nbbuild/
@@ -72,6 +114,7 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 
+<<<<<<< HEAD
 ##############################
 ## Visual Studio Code
 ##############################
@@ -82,3 +125,15 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+=======
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag
+/bin/
+>>>>>>> 1859932663c9183b495d90d9872d2e5ee3a9272b
