@@ -1,4 +1,4 @@
-package set;
+package list.set;
 
 class Persona implements Comparable<Persona>{
 
