@@ -1,5 +1,7 @@
 package javafxex;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -7,11 +9,15 @@ import javafx.stage.Stage;
 
 public class FXMainData {
 
+    //COMPS
     private static FXMainData instance;
     private Stage window1;
     private Scene scene1, scene2;
     private Label label1, label2;
     private Button button1, button2, button3;
+    private Button changeLAF = new Button("Change L&F/CSS");
+    //STRING PROPERTY EXAMPLE
+    private StringProperty name = new SimpleStringProperty(this, "name", null);
 
     private FXMainData() {
 
@@ -87,4 +93,26 @@ public class FXMainData {
     public void setButton3(Button button3) {
         this.button3 = button3;
     }
+
+    public Button getChangeLAF() {
+        return changeLAF;
+    }
+
+    public void setChangeLAF(Button changeLAF) {
+        this.changeLAF = changeLAF;
+    }
+    //STRING PROPERTY
+    public StringProperty name(){
+        return name;
+    }
+
+    public String getName() {
+        return name.getValue();
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    
 }
