@@ -3,6 +3,9 @@ package media;
 import java.io.File;
 import java.io.IOException;
 
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioFormat;
+
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.AudioHeader;
@@ -23,6 +26,7 @@ public class JAudioTaggerExample {
                 MP3AudioHeader mp3AudioHeader = mp3File.getMP3AudioHeader();
 
                 System.out.println("Audio Bit Rate: " + mp3AudioHeader.getBitRate());
+                System.out.println("Sample Rate: " + mp3AudioHeader.getSampleRateAsNumber());
             } catch (CannotReadException | IOException | TagException | ReadOnlyFileException
                     | InvalidAudioFrameException e) {
                 e.printStackTrace();
@@ -32,7 +36,9 @@ public class JAudioTaggerExample {
             try {
                 AudioFile audioFile = flacFileReader.read(file);
                 AudioHeader audioHeader = audioFile.getAudioHeader();
+
                 System.out.println("Audio Bit Rate: " + audioHeader.getBitRate());
+                System.out.println("Sample Rate: " + audioHeader.getSampleRateAsNumber());
             } catch (CannotReadException | IOException | TagException | ReadOnlyFileException
                     | InvalidAudioFrameException e) {
                 e.printStackTrace();
