@@ -46,10 +46,12 @@ class NioTest {
             sb.append((char) x);
         }
         System.out.println("Read: " + sb.toString());
-        */
+        //WRITE-------------------------------------------------
         Path pathWrite = Paths.get("resources/TextToWriteOn.txt");
         String text = "Ending of the Year";
         Files.write(pathWrite, text.getBytes());
+        */
+        
     }
 
     public static void main(String[] args) throws IOException {
