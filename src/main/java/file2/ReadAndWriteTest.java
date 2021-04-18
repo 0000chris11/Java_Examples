@@ -13,19 +13,26 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthToolTipUI;
+
+import com.cofii2.methods.MList;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-class ReadAndWriteTest extends Application {
+class ReadAndWriteTest {
 
     private static final int BUFFER_SIZE = 4 * 1024;
 
-    private void readingInputStreamBytes(String url){
+    private void readingInputStreamBytes(String url) {
         long init = System.currentTimeMillis();
-        try (InputStream is = new FileInputStream(url)){
+        try (InputStream is = new FileInputStream(url)) {
             int i = is.read();
             while (i != -1) {
                 i = is.read();
@@ -38,9 +45,10 @@ class ReadAndWriteTest extends Application {
         long end = System.currentTimeMillis();
         System.out.println("\ntime (readingInputStreamBytes): " + (end - init));
     }
+
     private void readingInputStreamByteArray(String url) {
         long init = System.currentTimeMillis();
-        try (InputStream is = new FileInputStream(url)){
+        try (InputStream is = new FileInputStream(url)) {
             byte[] array = new byte[1024];
             int i = is.read(array);
             while (i != -1) {
@@ -54,10 +62,11 @@ class ReadAndWriteTest extends Application {
         long end = System.currentTimeMillis();
         System.out.println("\ntime (readingInputStreamByteArray): " + (end - init));
     }
-    private void readingBufferedInputStream(String url){
+
+    private void readingBufferedInputStream(String url) {
         long init = System.currentTimeMillis();
-        int bufferSize = 16 * 1024;//16kbs
-        try (InputStream is = new BufferedInputStream(new FileInputStream(url), bufferSize)){
+        int bufferSize = 16 * 1024;// 16kbs
+        try (InputStream is = new BufferedInputStream(new FileInputStream(url), bufferSize)) {
             byte[] array = new byte[1024];
             int i = is.read(array);
             while (i != -1) {
@@ -71,8 +80,9 @@ class ReadAndWriteTest extends Application {
         long end = System.currentTimeMillis();
         System.out.println("\ntime (readingBufferedInputStream): " + (end - init));
     }
-    //-----------------------------------------------------------
-    private void writing(String url, String text){
+
+    // -----------------------------------------------------------
+    private void writing(String url, String text) {
         long init = System.currentTimeMillis();
         try (OutputStream os = new FileOutputStream(url)) {
             os.write(text.getBytes());
@@ -82,25 +92,25 @@ class ReadAndWriteTest extends Application {
         long end = System.currentTimeMillis();
         System.out.println("Time (writing): " + (end - init));
     }
-    
-    private void readAndWrite(String urlFrom, String urlTo){
-        
-        long init = System.currentTimeMillis(); 
+
+    private void readAndWrite(String urlFrom, String urlTo) {
+
+        long init = System.currentTimeMillis();
 
         InputStream is = null;
-        byte[] buffer = new byte[1024];//1kb
+        byte[] buffer = new byte[1024];// 1kb
         try (OutputStream os = new FileOutputStream(urlTo)) {
             is = new FileInputStream(urlFrom);
 
             int byteRead;
-            while((byteRead = is.read(buffer)) != -1){
+            while ((byteRead = is.read(buffer)) != -1) {
                 os.write(buffer, 0, byteRead);
             }
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        } finally{
-            if(is != null){
+        } finally {
+            if (is != null) {
                 try {
                     is.close();
                 } catch (IOException e) {
@@ -108,15 +118,16 @@ class ReadAndWriteTest extends Application {
                 }
             }
         }
-        long end = System.currentTimeMillis(); 
+        long end = System.currentTimeMillis();
         System.out.println("\nTime (readAndWrite): " + (end - init));
     }
-    //-----------------------------------------------------------
-    private void reader(String url){
+
+    // -----------------------------------------------------------
+    private void reader(String url) {
         try (Reader r = new FileReader(url)) {
             int data = r.read();
             System.out.println((char) data);
-            while(data != -1){
+            while (data != -1) {
                 data = r.read();
                 System.out.println((char) data);
             }
@@ -125,12 +136,12 @@ class ReadAndWriteTest extends Application {
         }
     }
 
-    private void readerBuffer(String url){
+    private void readerBuffer(String url) {
         try (Reader r = new BufferedReader(new FileReader(url), BUFFER_SIZE)) {
             int data = r.read();
-            
+
             System.out.println((char) data);
-            while(data != -1){
+            while (data != -1) {
                 data = r.read();
                 System.out.println((char) data);
             }
@@ -139,7 +150,7 @@ class ReadAndWriteTest extends Application {
         }
     }
 
-    private void writer(String url, String text, boolean concat){
+    private void writer(String url, String text, boolean concat) {
         try (Writer w = new FileWriter(url, concat)) {
             w.write(text);
         } catch (Exception e) {
@@ -147,20 +158,16 @@ class ReadAndWriteTest extends Application {
         }
     }
 
-    private void writerBuffer(String url, String text, boolean concat){
+    private void writerBuffer(String url, String text, boolean concat) {
         try (Writer w = new BufferedWriter(new FileWriter(url, concat), BUFFER_SIZE)) {
             w.write(text);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    //-----------------------------------------------------------
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    @Override
-    public void start(Stage stage) throws Exception {
+    // -----------------------------------------------------------
+    ReadAndWriteTest(){
         String url = "resources/WriteOnMe.txt";
         String text = "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt";
         /*
@@ -176,10 +183,11 @@ class ReadAndWriteTest extends Application {
         readerBuffer(url);
         */
         
-        writerBuffer(url, text, true);
+        //writerBuffer(url, text, true);
+    }
 
-        stage.setScene(new Scene(new VBox(), 200, 200));
-        stage.show();
+    public static void main(String[] args) {
+        new ReadAndWriteTest();
 
     }
 }
