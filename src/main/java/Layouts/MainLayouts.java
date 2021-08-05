@@ -20,6 +20,9 @@ import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
+
+import amethods.MM;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -35,8 +38,6 @@ import javax.swing.LayoutStyle;
 import javax.swing.OverlayLayout;
 import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
-
-import AAMethods.MM;
 
 /**
  *

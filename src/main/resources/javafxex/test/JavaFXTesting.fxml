@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxex.test.JFXTestController">
+   <center>
+      <ScrollPane prefViewportHeight="375.0" prefViewportWidth="500.0">
+         <content>
+            <HBox fx:id="hbox" alignment="CENTER" prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER" />
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER">
+         <children>
+            <Label fx:id="lbTest" text="Label" BorderPane.alignment="CENTER" />
+            <Button fx:id="btnTest" mnemonicParsing="false" text="Button" />
+            <TextField fx:id="tfTest" />
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" stroke="BLACK" strokeType="INSIDE" width="100.0" BorderPane.alignment="CENTER_RIGHT" />
+   </right>
+</BorderPane>

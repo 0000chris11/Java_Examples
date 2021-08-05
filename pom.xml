@@ -5,8 +5,21 @@
       <artifactId>Examples2</artifactId>
       <version>1.0-SNAPSHOT</version>
       <packaging>jar</packaging>
-      
+
       <dependencies>
+
+            <dependency>
+                  <groupId>org.controlsfx</groupId>
+                  <artifactId>fxsampler</artifactId>
+                  <version>1.0.11</version>
+            </dependency>
+
+
+            <dependency>
+                  <groupId>org.controlsfx</groupId>
+                  <artifactId>controlsfx-samples</artifactId>
+                  <version>11.1.0</version>
+            </dependency>
 
             <dependency>
                   <groupId>org.jflac</groupId>
@@ -19,13 +32,13 @@
                   <artifactId>gson</artifactId>
                   <version>2.8.2</version>
             </dependency>
-            
+
             <dependency>
                   <groupId>org.apache.commons</groupId>
                   <artifactId>commons-lang3</artifactId>
                   <version>3.11</version>
             </dependency>
-            
+
             <dependency>
                   <groupId>com.fasterxml.jackson.core</groupId>
                   <artifactId>jackson-databind</artifactId>
@@ -35,31 +48,37 @@
             <dependency>
                   <groupId>org.openjfx</groupId>
                   <artifactId>javafx-controls</artifactId>
-                  <version>15</version>
+                  <version>12</version>
             </dependency>
 
             <dependency>
                   <groupId>org.openjfx</groupId>
                   <artifactId>javafx-fxml</artifactId>
                   <version>16</version>
-              </dependency>
+            </dependency>
 
-              <dependency>
+            <dependency>
+                  <groupId>org.controlsfx</groupId>
+                  <artifactId>controlsfx</artifactId>
+                  <version>11.1.0</version>
+            </dependency>
+            <!-- ========================================== -->
+            <dependency>
                   <groupId>org</groupId>
                   <artifactId>jaudiotagger</artifactId>
                   <version>2.0.3</version>
-              </dependency>
-
+            </dependency>
+            <!-- ========================================== -->
             <dependency>
                   <groupId>com.cofii</groupId>
                   <artifactId>C0FII</artifactId>
                   <version>1.0-SNAPSHOT</version>
             </dependency>
       </dependencies>
-      
+
       <properties>
             <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            <maven.compiler.source>14</maven.compiler.source>
-            <maven.compiler.target>14</maven.compiler.target>
+            <maven.compiler.source>12</maven.compiler.source>
+            <maven.compiler.target>12</maven.compiler.target>
       </properties>
 </project>

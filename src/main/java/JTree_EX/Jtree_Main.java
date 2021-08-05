@@ -5,7 +5,6 @@
  */
 package JTree_EX;
 
-import AAMethods.MM;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -20,6 +19,9 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
+
+import amethods.MM;
+
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 import javax.swing.tree.TreeModel;

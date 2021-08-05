@@ -5,7 +5,6 @@
  */
 package JTree_EX;
 
-import AAMethods.MM;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -24,6 +23,8 @@ import javax.swing.text.JTextComponent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
+
+import amethods.MM;
 
 /**
  *

@@ -1,5 +1,6 @@
-package Advanced;
-public class Recursion {
+package advanced;
+
+class Recursion {
 
       public static void main(String[] args) {
             System.out.println(fact(4));

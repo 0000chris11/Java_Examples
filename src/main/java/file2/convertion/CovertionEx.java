@@ -22,6 +22,7 @@ public class CovertionEx {
 
     public static void main(String[] args) {
         //IS THIS CLASS UNFINISHED?
+        /*
         FLACEncoder flacEncoder = new FLACEncoder();
         
         FlacAudioFileReader flacAudioFileReader = new FlacAudioFileReader();
@@ -30,7 +31,7 @@ public class CovertionEx {
         } catch (UnsupportedAudioFileException | IOException e1) {
             e1.printStackTrace();
         }
-
+        */
         //ONLY FOR READING AND TO GET OI INFOO
         FlacFileReader flacFileReader = new FlacFileReader();
         AudioFile audioFile;

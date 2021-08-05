@@ -1,37 +1,35 @@
 package basic;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-//import javafx.scene.media.Media;
-//import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
-public class Sound {
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
-      public static void main(String[] args) throws IOException {
-            /*
-            String bip = "AV16 - E2 GunShot.mp3";
-            //Media hit = new Media(new File(bip).toURI().toString());
-            //MediaPlayer mediaPlayer = new MediaPlayer(hit);
-            //mediaPlayer.play();
+/**
+ * Does Not Work
+ */
+class Sound {
 
-            
-            String gun = "C:\\C0F\\NetBeans Worl-Space\\Examples\\img\\AV16 - E2 GunShot.mp3";
-            InputStream in = null;
-            try {
-                  in = new FileInputStream(gun);
+      public static void main(String[] args)  {
+            System.out.println("MAIN");
+            Platform.startup(() -> {
+                  System.out.println("\tSTARTUP");
+                  //Media hit = new Media(Sound.class.getResource("/SOUND.mp3").toString());
+                  Media hit = new Media(new File("C:\\C0F\\Music\\Z Sounds\\SOUND.wav").toURI().toString());
+                  MediaPlayer mediaPlayer = new MediaPlayer(hit);
                   
-                  //AudioStream audioStream = new AudioStream(in);
-            } catch (FileNotFoundException ex) {
-                  Logger.getLogger(Sound.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                  if(in != null){
-                        in.close();
-                  }
-            }
-             */
+
+                  Timeline tl = new Timeline(new KeyFrame(Duration.seconds(2), e -> {
+                        System.out.println("\t\tPLAY");
+                        mediaPlayer.play();
+                  }));
+                  tl.setCycleCount(10);
+                  tl.play();
+            });
+
       }
 }
