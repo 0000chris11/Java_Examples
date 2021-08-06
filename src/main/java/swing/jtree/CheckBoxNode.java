@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JTree_EX;
+package swing.jtree;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
+
 public class CheckBoxNode {
+
       String text;
       boolean selected;
 
@@ -37,7 +39,6 @@ public class CheckBoxNode {
       
       @Override
       public String toString() {
-            //System.out.println("calling toString()");
             return text;
       }
       

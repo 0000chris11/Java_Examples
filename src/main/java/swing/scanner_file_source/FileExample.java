@@ -1,12 +1,13 @@
-package File_OLD;
+package swing.scanner_file_source;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Formatter;
 import java.util.Scanner;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,30 +15,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
-import java.net.URL;
-import javax.swing.ImageIcon;
-import javax.swing.border.Border;
 
-public class File_example extends JFrame {
+public class FileExample extends JFrame {
 
-      private Formatter format;
-      private File file;
-      private Scanner sc;
+      private transient Formatter format;
+      private transient Scanner sc;
 
       JPanel panel = new JPanel();
-      JLabel lb_text = new JLabel("Insert Url");
-      
-      String url = "C:\\C0F\\About Music\\Album Front\\Adult.jpg";
-      ImageIcon icon  = new ImageIcon(url);
-      //Image img = new Image(icon.getImage());
-      JLabel lb_img = new JLabel();
-      
-      
+      JLabel lbText = new JLabel("Insert Url");
 
-      public File_example() {
+      String url = "C:\\C0F\\About Music\\Album Front\\Adult.jpg";
+      ImageIcon icon = new ImageIcon(url);
+      // Image img = new Image(icon.getImage());
+      JLabel lbImg = new JLabel();
+
+      FileExample() {
             setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             setLocation(10, 10);
             setSize(600, 400);
@@ -50,32 +42,32 @@ public class File_example extends JFrame {
             panel.setBackground(Color.BLACK);
             add(panel);
 
-            lb_text.setLocation(6, 6);
-            lb_text.setSize(100, 42);
-            lb_text.setForeground(Color.WHITE);
-            panel.add(lb_text);
-            //+++++++++++++++++++++++++++++++++++++++++++++++++
-            BufferedImage bimage = new BufferedImage(300,300,BufferedImage.TYPE_INT_ARGB);
+            lbText.setLocation(6, 6);
+            lbText.setSize(100, 42);
+            lbText.setForeground(Color.WHITE);
+            panel.add(lbText);
+            // +++++++++++++++++++++++++++++++++++++++++++++++++
+            BufferedImage bimage = new BufferedImage(300, 300, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = bimage.createGraphics();
-            
+
             g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             g2.drawImage(icon.getImage(), 0, 0, 300, 300, null);
-            
-            System.out.println("BufferedImage Width: "+ bimage.getWidth()+ "\tHeight: "+ bimage.getHeight());
-            
+
+            System.out.println("BufferedImage Width: " + bimage.getWidth() + "\tHeight: " + bimage.getHeight());
+
             ImageIcon icon2 = new ImageIcon(bimage);
-            //++++++++++++++++++++++++++++++++++++++++++++++++++
-            lb_img.setLocation(6, lb_text.getY() + lb_text.getHeight() + 6);
-            lb_img.setSize(300, 300);
-            lb_img.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-            lb_img.setIcon(icon2);
-            panel.add(lb_img);
+            // ++++++++++++++++++++++++++++++++++++++++++++++++++
+            lbImg.setLocation(6, lbText.getY() + lbText.getHeight() + 6);
+            lbImg.setSize(300, 300);
+            lbImg.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+            lbImg.setIcon(icon2);
+            panel.add(lbImg);
 
             System.out.println("WELCOME\n");
       }
 
-      public void seeFile(String url) {
-            file = new File(url);
+      void seeFile(String url) {
+            File file = new File(url);
             if (file.exists()) {
                   System.out.println(file.getName() + " exists");
             } else {
@@ -83,8 +75,8 @@ public class File_example extends JFrame {
             }
       }
 
-      public void createFile(String url) {
-            try {//Use a different url
+      void createFile(String url) {
+            try {// Use a different url
                   format = new Formatter(url);
                   System.out.println("You created " + format);
             } catch (Exception e) {
@@ -92,23 +84,24 @@ public class File_example extends JFrame {
             }
       }
 
-      public void addRecords(String text) {
+      void addRecords(String text) {
             format.format(text);
       }
 
-      public void closeFile() {
+      void closeFile() {
             format.close();
       }
 
-      public void openFile(String url) {
+      void openFile(String url) {
             try {
                   sc = new Scanner(new File(url));
             } catch (Exception e) {
+                  e.printStackTrace();
             }
 
             while (sc.hasNext()) {
                   String a = sc.next();
-                  System.out.printf(a + " ");
+                  System.out.println(a + " ");
             }
 
       }

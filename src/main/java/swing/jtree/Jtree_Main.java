@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JTree_EX;
+package swing.jtree;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -174,7 +174,7 @@ public class Jtree_Main {
             JTE.setSize(400, 800);
             JTE.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
             JTE.addTreeSelectionListener(new JTE_SL());
-            JTE.setCellRenderer(new JTE_CellRenderer());
+            JTE.setCellRenderer(new JTreeCellRenderer());
       }
 
       private void treeConfig2() {
@@ -198,8 +198,8 @@ public class Jtree_Main {
             JTE2.setSize(400, 800);
             JTE2.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
             //JTE2.addTreeSelectionListener(new JTE_SL());
-            JTE2.setCellRenderer(new JTE2_CellRenderer());
-            JTE2.setCellEditor(new JTE2_CellEditor(JTE2));
+            JTE2.setCellRenderer(new JTree2CellRenderer());
+            JTE2.setCellEditor(new JTree2CellEditor(JTE2));
       }
 
       public Jtree_Main() {

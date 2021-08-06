@@ -3,39 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JTree_EX;
+package swing.jtree;
 
 import java.awt.Component;
 import java.awt.Rectangle;
-import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
+
 import javax.swing.AbstractCellEditor;
 import javax.swing.JCheckBox;
-import javax.swing.JToggleButton;
 import javax.swing.JTree;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellEditor;
 import javax.swing.tree.TreePath;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
-public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEditor {
+public class JTree2CellEditor extends AbstractCellEditor implements TreeCellEditor {
 
-      JTE2_CellRenderer renderer = new JTE2_CellRenderer();
-
+      transient JTree2CellRenderer renderer = new JTree2CellRenderer();
       DefaultMutableTreeNode editedNode;
-      Object UO;
+      transient Object uo;
 
-      JTree JTE;
+      JTree jtree;
 
-      public JTE2_CellEditor(JTree jtr) {
-            JTE = jtr;
+      public JTree2CellEditor(JTree jtree) {
+            this.jtree = jtree;
       }
 
       @Override
@@ -47,11 +43,9 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
                     true, expanded, leaf, row, true);
 
             //+++++++++++++++++++++++++++++++++++++++++++++++
-            ItemListener itemListener = new ItemListener() {
-                  public void itemStateChanged(ItemEvent itemEvent) {
-                        tree.repaint();
-                        fireEditingStopped();//???????????????????????
-                  }
+            ItemListener itemListener = i -> {
+                  tree.repaint();
+                  fireEditingStopped();
             };
             //+++++++++++++++++++++++++++++++++++++++++++++++
             if (editor instanceof JCheckBox) {
@@ -64,7 +58,6 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
       @Override
       public Object getCellEditorValue() {
             System.out.println("getCellEditorValue: ");
-            Object returnValue;
             /*
             if(UO instanceof JToggleButton){
                   returnValue = (JToggleButton) UO;
@@ -86,19 +79,19 @@ public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEdito
 
             if (anEvent instanceof MouseEvent) {
                   MouseEvent mouseEvent = (MouseEvent) anEvent;
-                  TreePath path = JTE.getPathForLocation(mouseEvent.getX(),
+                  TreePath path = jtree.getPathForLocation(mouseEvent.getX(),
                           mouseEvent.getY());
                   if (path != null) {
-                        UO = path.getLastPathComponent();
-                        if ((UO != null) && (UO instanceof DefaultMutableTreeNode)) {
-                              editedNode = (DefaultMutableTreeNode) UO;
+                        uo = path.getLastPathComponent();
+                        if (uo instanceof DefaultMutableTreeNode) {
+                              editedNode = (DefaultMutableTreeNode) uo;
                               Object userObject = editedNode.getUserObject();
                               if (userObject instanceof JCheckBox) {
                                     //System.out.println("JToggleButton");
                                     //System.out.println("CheckBox");
-                                    Rectangle r = JTE.getPathBounds(path);
+                                    Rectangle r = jtree.getPathBounds(path);
                                     int x = mouseEvent.getX() - r.x;
-                                    int y = mouseEvent.getY() - r.y;
+                                    //int y = mouseEvent.getY() - r.y;
 
                                     JCheckBox checkbox = renderer.getCheckBoxLeaf();
 

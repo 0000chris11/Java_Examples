@@ -1,15 +1,15 @@
-package Game_ex;
+package swing.game_ex;
 
-import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 public class Screen extends JFrame{
-	private GraphicsDevice gd;
-	
-	public Screen() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	Screen() {
+
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		add(new Draw());
 		setUndecorated(false);
 		setResizable(false);
@@ -20,7 +20,7 @@ public class Screen extends JFrame{
 		
 		GraphicsEnvironment env = 
 				GraphicsEnvironment.getLocalGraphicsEnvironment();
-		gd = env.getDefaultScreenDevice();
+		env.getDefaultScreenDevice();//RETURN graphicsDevice;
 		
 	}
 	public static void main(String[] args) {

@@ -1,9 +1,9 @@
-package File_OLD;
+package swing.scanner_file_source;
 
 
-public class File_Main {
+public class FileMain {
     public static void main(String[] args) {
-        File_example fex = new File_example();
+        FileExample fex = new FileExample();
             /*
 	fex.createFile("doodles.txt");
 	fex.addRecords("can I go... now");

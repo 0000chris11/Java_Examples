@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JTree_EX;
+package swing.jtree;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.io.File;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -18,11 +17,12 @@ import amethods.MM;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
-public class JTE_CellRenderer extends DefaultTreeCellRenderer {
+public class JTreeCellRenderer extends DefaultTreeCellRenderer {
 
-      final File heart = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\like.png");
+      static final String HEATH_PATH = "C:\\C0F\\Image\\Z Icons\\Not Mine\\like.png";
+      final File heart = new File(HEATH_PATH);
       final File note = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\musicNote.png");
       final File folder = new File("C:\\C0F\\Image\\Z Icons\\Not Mine\\folder-blue-512.png");
 
@@ -65,7 +65,7 @@ public class JTE_CellRenderer extends DefaultTreeCellRenderer {
             return this;
       }
 
-      public JTE_CellRenderer() {
+      public JTreeCellRenderer() {
             //ImageIcon icon = new ImageIcon("C:\\C0F\\Image\\X Icons\\+ small.png");
             //this.setLeafIcon(icon);
             this.setBackgroundNonSelectionColor(new Color(0, 0, 0, 0));
