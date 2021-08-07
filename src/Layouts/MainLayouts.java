@@ -42,7 +42,7 @@ import net.miginfocom.swing.MigLayout;
 import com.cofii.myClasses.VT;
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class MainLayouts {
 

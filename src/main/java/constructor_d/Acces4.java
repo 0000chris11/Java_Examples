@@ -7,7 +7,7 @@ package constructor_d;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Acces4 {
       

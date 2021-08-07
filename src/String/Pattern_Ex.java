@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Pattern_Ex {
 

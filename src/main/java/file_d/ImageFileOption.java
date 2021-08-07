@@ -18,7 +18,7 @@ import amethods.MM;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class ImageFileOption {
 

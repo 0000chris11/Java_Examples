@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public interface forWindow {
       

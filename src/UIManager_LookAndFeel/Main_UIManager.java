@@ -14,7 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Main_UIManager {
 

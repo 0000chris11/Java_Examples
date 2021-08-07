@@ -11,7 +11,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class JTE_SL implements TreeSelectionListener {
 

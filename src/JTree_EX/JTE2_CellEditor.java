@@ -23,7 +23,7 @@ import javax.swing.tree.TreePath;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class JTE2_CellEditor extends AbstractCellEditor implements TreeCellEditor {
 

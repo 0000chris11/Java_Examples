@@ -20,7 +20,7 @@ import javax.swing.plaf.synth.SynthButtonUI;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class StyleComponents extends JFrame{
       JPanel p1 = new JPanel();

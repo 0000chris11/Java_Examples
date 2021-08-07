@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import java.io.File;
 /**
          *
-         * @author Christopher
+         * @author C0FII
          */
 import java.io.IOException;
 import javax.imageio.ImageIO;

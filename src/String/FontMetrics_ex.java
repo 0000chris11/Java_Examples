@@ -24,7 +24,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class FontMetrics_ex {
 

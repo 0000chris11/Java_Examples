@@ -20,7 +20,7 @@ import javax.swing.border.Border;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class VT {
 

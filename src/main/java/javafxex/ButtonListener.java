@@ -12,7 +12,7 @@ package javafxex;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class ButtonListener /*implements EventHandler<ActionEvent>*/{
 

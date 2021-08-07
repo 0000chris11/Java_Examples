@@ -7,7 +7,7 @@ package Array_Lisr_for_Methods;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class MyClass{
 

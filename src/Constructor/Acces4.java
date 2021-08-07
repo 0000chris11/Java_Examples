@@ -7,7 +7,7 @@ package Constructor;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Acces4 {
       Thread n1;

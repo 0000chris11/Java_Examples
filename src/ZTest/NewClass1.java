@@ -9,7 +9,7 @@ import ZTest.NewClass1.TextInput;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class NewClass1 {
 

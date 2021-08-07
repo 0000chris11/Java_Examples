@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Main_Sync {
 

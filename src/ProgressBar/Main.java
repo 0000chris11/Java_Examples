@@ -10,7 +10,7 @@ import javax.swing.JProgressBar;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Main {
       

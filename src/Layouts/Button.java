@@ -11,7 +11,7 @@ import net.miginfocom.swing.MigLayout;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Button extends JButton {
 

@@ -26,7 +26,7 @@ import javax.swing.tree.TreeModel;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Jtree_Main {
 

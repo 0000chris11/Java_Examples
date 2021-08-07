@@ -25,7 +25,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class xmlC {
 

@@ -3,7 +3,7 @@ package Constructor;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Acces1 {
       public static void main(String[] args){

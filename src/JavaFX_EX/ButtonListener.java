@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class ButtonListener implements EventHandler<ActionEvent>{
 

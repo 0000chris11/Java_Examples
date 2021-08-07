@@ -27,7 +27,7 @@ import javax.swing.tree.TreeCellRenderer;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class JTE2_CellRenderer implements TreeCellRenderer {
 

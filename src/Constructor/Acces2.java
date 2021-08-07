@@ -3,7 +3,7 @@ package Constructor;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Acces2 {
       Data dt = new Data("Acces2");

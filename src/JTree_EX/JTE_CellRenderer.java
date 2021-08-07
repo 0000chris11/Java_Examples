@@ -17,7 +17,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class JTE_CellRenderer extends DefaultTreeCellRenderer {
 

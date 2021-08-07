@@ -13,7 +13,7 @@ import java.util.UUID;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 
 class AlertService {

@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class DATA {
       

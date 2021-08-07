@@ -7,7 +7,7 @@ package JTree_EX;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class TextFieldNode {
       

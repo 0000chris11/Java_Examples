@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Main {
 

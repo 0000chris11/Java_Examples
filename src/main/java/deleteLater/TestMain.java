@@ -23,7 +23,7 @@ import javax.swing.WindowConstants;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class TestMain {
       

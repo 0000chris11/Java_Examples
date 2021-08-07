@@ -18,7 +18,7 @@ import javafx.event.EventHandler;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class VF extends Application implements EventHandler<ActionEvent> {
 

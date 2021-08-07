@@ -12,7 +12,7 @@ import javax.swing.text.DocumentFilter;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class TextFieldControl extends JFrame {
 

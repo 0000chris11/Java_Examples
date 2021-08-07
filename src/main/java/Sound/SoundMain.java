@@ -18,7 +18,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class SoundMain {
 

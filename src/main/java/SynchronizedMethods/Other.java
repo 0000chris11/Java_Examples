@@ -7,7 +7,7 @@ package SynchronizedMethods;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class Other extends Main_Sync{
       

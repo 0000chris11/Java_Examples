@@ -7,7 +7,7 @@ package array_of_interfaces;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class MyClass{
 

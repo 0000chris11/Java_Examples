@@ -7,7 +7,7 @@ package AAMethods;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class MethodsToAdd {
       

@@ -2,7 +2,7 @@ package Constructor;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public class CC {
       //ANSI

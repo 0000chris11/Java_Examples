@@ -7,7 +7,7 @@ package Array_Lisr_for_Methods;
 
 /**
  *
- * @author Christopher
+ * @author C0FII
  */
 public interface Select {
       void hold();
