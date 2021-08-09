@@ -1,7 +1,6 @@
 package basic;
 
-
-public class genericMethod {
+public class GenericMethod {
 
       public static void main(String[] args) {
             Integer[] iray = {1, 2, 3, 4, 5, 6};

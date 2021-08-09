@@ -34,7 +34,6 @@ public class SubString2 {
             }
            
              */
-            int co = 0;
             char ch;
             //char brak = ';';
             for (int a = 0; a < zz; a++) {
@@ -42,7 +41,7 @@ public class SubString2 {
                   System.out.println(ch);
                   if(ch == ';'){
                         System.out.println("One with ;: "+ ch);
-                        co++;
+                        
                   }
                   
 
