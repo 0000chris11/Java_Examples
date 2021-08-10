@@ -67,7 +67,7 @@ public class ImageReizeTest {
             btn_change.addActionListener(new ActionListener(){
                   @Override
                   public void actionPerformed(ActionEvent e) {
-                        Dimension scaled = MImage.getScaledDownHeight_AR(
+                        Dimension scaled = MImage.getScaledDownHeightAR(
                                 new Dimension(ii.getIconWidth(), ii.getIconHeight()), 250);
                         lb.setPreferredSize(scaled);
                         lb.setIcon(MImage.resizeIcon((ImageIcon) ii, scaled));

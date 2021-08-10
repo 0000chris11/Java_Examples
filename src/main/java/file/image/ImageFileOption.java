@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package file_d;
+package file.image;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -13,77 +13,74 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
-import amethods.MM;
+import com.cofii2.methods.MImage;
 
 /**
  *
  * @author C0FII
  */
-public class ImageFileOption {
+class ImageFileOption {
 
-      public ImageFileOption() {
-            //BufferedImage bimage = new BufferedImage(225, 225, 
-            //      BufferedImage.TYPE_INT_ARGB);
+      ImageFileOption() {
             Scanner sc = new Scanner(System.in);
-            //1
+            // 1
             System.out.print("Choose: ");
-            int n = sc.nextInt();//Read what you type (save in variable)
-            //+++++++++++++++++++++++++++++++++++
+            int nextInt = sc.nextInt();// Read what you type (save in variable)
+            // +++++++++++++++++++++++++++++++++++
             String fileName = "like.png";
-            File myNewPNGFile = new File("C:\\C0F\\Image\\X Icons\\Not Mine\\"
-                    + fileName);
-            //++++++++++++++++++++++++++++++++++
+            File myNewPNGFile = new File("C:\\C0F\\Image\\X Icons\\Not Mine\\" + fileName);
+            // ++++++++++++++++++++++++++++++++++
             BufferedImage bimage = null;
             boolean b = false;
-            switch (n) {
+            switch (nextInt) {
                   case 1:
                         System.out.println("\tChangeColor");
                         bimage = changeColor(myNewPNGFile);
                         break;
                   case 2:
                         System.out.println("\tResize Image");
-                        bimage = MM.resizeImage(myNewPNGFile, 100, 80);
+                        //bimage = MM.resizeImage(myNewPNGFile, 100, 80);
+                        MImage.resizeIcon(new ImageIcon(myNewPNGFile.toString()), 100, 80);
                         break;
                   case 3:
-                        fileName
-                                = (fileName.substring(fileName.indexOf("png") + 3, fileName.length())
-                                + " copy.png").trim();
+                        fileName = (fileName.substring(fileName.indexOf("png") + 3, fileName.length()) + " copy.png")
+                                    .trim();
                         System.out.println("\tfileName: " + fileName);
+                        break;
+                  default:
+                        break;
             }
 
-            if (n != 3) {
+            if (nextInt != 3) {
                   try {
-                        fileName
-                                = (fileName.substring(fileName.indexOf("png") + 3, fileName.length())
-                                + " copy.png").trim();
-                        
-                        b = ImageIO.write(bimage, "PNG",
-                                new File("C:\\C0F\\Image\\X Icons\\Not Mine\\"
-                                        + fileName));
+                        fileName = (fileName.substring(fileName.indexOf("png") + 3, fileName.length()) + " copy.png")
+                                    .trim();
+
+                        b = ImageIO.write(bimage, "PNG", new File("C:\\C0F\\Image\\X Icons\\Not Mine\\" + fileName));
 
                   } catch (IOException ex) {
                         Logger.getLogger(ImageFileOption.class.getName()).log(Level.SEVERE, null, ex);
                   }
 
-                  //+++++++++++++++++++++++++++++++++
-                  if (b == true) {
+                  // +++++++++++++++++++++++++++++++++
+                  if (b) {
                         System.out.println("SUCCESS");
                   } else {
                         System.out.println("ERROR");
                   }
             }
+
+            sc.close();
       }
 
-      private BufferedImage changeColor(File F) {
-
-            boolean b = false;
+      private BufferedImage changeColor(File file) {
             BufferedImage bimage = null;
 
             try {
-                  bimage = ImageIO.read(F);
-
-                  bimage = MM.changeImageColorOfOneColor(F, Color.RED);
+                  ImageIO.read(file);
+                  bimage = MImage.changeImageColorOfOneColor(file, Color.RED);
 
             } catch (IOException ex) {
                   ex.printStackTrace();

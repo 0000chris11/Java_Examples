@@ -1,6 +1,5 @@
 package java8;
 
-import java.lang.StackWalker.Option;
 import java.util.Optional;
 
 class OptionalEx {

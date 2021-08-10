@@ -1,4 +1,4 @@
-package inheritance_d;
+package inheritance;
 
 import javax.swing.JOptionPane;
 

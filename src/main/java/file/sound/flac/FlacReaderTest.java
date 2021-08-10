@@ -1,10 +1,7 @@
-package file2.convertion;
+package file.sound.flac;
 
 import java.io.File;
 import java.io.IOException;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
@@ -12,11 +9,8 @@ import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.audio.flac.FlacFileReader;
 import org.jaudiotagger.tag.TagException;
-import org.jflac.FLACEncoder;
-import org.jflac.sound.spi.FlacAudioFileReader;
-import org.jflac.sound.spi.FlacAudioFormat;
 
-public class CovertionEx {
+public class FlacReaderTest {
 
     private static final String FILE_URL = "C:\\C0F\\Music\\Sailor Moon\\03 - Kawaii Takurami.flac";
 

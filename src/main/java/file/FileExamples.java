@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package file_d;
+package file;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  *
  * @author C0FII
  */
-public class FileTest {
+public class FileExamples {
 
-      private FileTest() {
+      private FileExamples() {
             Scanner sc = new Scanner(System.in);
             System.out.println("OPTIONS:");
             System.out.println("fileExist folderCreation foldersCreation fileRename fileDeletion");
@@ -126,24 +126,26 @@ public class FileTest {
                               while ((line = br.readLine()) != null) {
                                     System.out.println("\t" + line);
                               }
+
+                              br.close();
                         } catch (IOException ex) {
-                              Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
+                              Logger.getLogger(FileExamples.class.getName()).log(Level.SEVERE, null, ex);
                         }
                   } catch (FileNotFoundException ex) {
-                        Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FileExamples.class.getName()).log(Level.SEVERE, null, ex);
                   }
             } else if (option == 2) {
                   try {
                         FileInputStream in = new FileInputStream("C:\\C0F\\Youtube Channels.txt");
                         Scanner sc = new Scanner(in);
                         System.out.println("\nRead a File (Using FileInputStream and Scanner)");
-                        String line;
 
                         while (sc.hasNext()) {
                               System.out.println("\t" + sc.next());
                         }
+                        sc.close();
                   } catch (FileNotFoundException ex) {
-                        Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FileExamples.class.getName()).log(Level.SEVERE, null, ex);
                   }
 
             }
@@ -160,7 +162,7 @@ public class FileTest {
 
                         fw.close();
                   } catch (IOException ex) {
-                        Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FileExamples.class.getName()).log(Level.SEVERE, null, ex);
                   }
             } else if (option == 2) {
                   try {
@@ -172,7 +174,7 @@ public class FileTest {
 
                         fw.close();
                   } catch (IOException ex) {
-                        Logger.getLogger(FileTest.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FileExamples.class.getName()).log(Level.SEVERE, null, ex);
                   }
             }
 
@@ -180,7 +182,7 @@ public class FileTest {
 
       // ++++++++++++++++++++++++++++++++++++++++++++++
       public static void main(String[] args) {
-            new FileTest();
+            new FileExamples();
       }
 
 }

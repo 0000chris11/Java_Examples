@@ -45,60 +45,6 @@ public class MM {
 
             System.out.println("JP Bounds: " + jc.getBounds());
       }
-      //DELETE+LATER+++++++++++++++++++++++++++++++++++++++++
-      public static ImageIcon resizeIcon(ImageIcon ii, int imageType) {
-            //+++++++++++++++++++++++++++++++++++++++++++++++++
-            BufferedImage bimage = new BufferedImage(225, 225, imageType);
-            Graphics2D g2 = bimage.createGraphics();
-
-            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-
-            g2.drawImage(ii.getImage(), 0, 0, 225, 225, null);
-
-            ImageIcon icon2 = new ImageIcon(bimage);
-            return icon2;
-            //++++++++++++++++++++++++++++++++++++++++++++++++++
-      }
-      //++++++++++++++++++++++++++++++++++++++++++
-      public static BufferedImage changeImageColorOfOneColor(File F, Color C) {
-            BufferedImage bimage = null;
-            try {
-                  bimage = ImageIO.read(F);
-
-                  int w = bimage.getWidth();
-                  int h = bimage.getHeight();
-
-                  for (int a = 0; a < h; a++) {
-                        for (int b = 0; b < w; b++) {
-                              int rgb = bimage.getRGB(b, a);
-                              //System.out.println("RGB on [" + rgb + "]");
-                              if (rgb != 0) {
-                                    //PAINTING ONLY WHEN THERE IS COLOR
-                                    bimage.setRGB(b, a, C.getRGB());
-                              }
-                        }
-                  }
-            } catch (IOException ex) {
-                  ex.printStackTrace();
-            }
-            return bimage;
-      }
-     
-      public static BufferedImage resizeImage(File F, int x, int y){
-            BufferedImage bimage = new BufferedImage(x, y, BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2 = bimage.createGraphics();
-
-            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-
-            g2.drawImage(new ImageIcon(F.toString()).getImage(), 
-                    0, 0, x, y, null);
-            
-            
-            
-            return bimage;
-      }
       //+++++++++++++++++++++++++++++++++++++++++++
       public static boolean isCellEditableForCheckBoxAndDefaults(EventObject anEvent, JTree JTE, 
               DefaultMutableTreeNode editedNode){

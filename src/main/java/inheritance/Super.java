@@ -1,4 +1,4 @@
-package inheritance_d;
+package inheritance;
 
 public abstract class Super {
 

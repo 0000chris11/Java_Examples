@@ -2,7 +2,6 @@ package javafx.transition;
 
 import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
-import javafx.animation.PathTransition.OrientationType;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,8 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
