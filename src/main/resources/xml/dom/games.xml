@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Games>
     <Game id="1">
         <name>Kingdom Hearts</name>
@@ -11,5 +11,9 @@
     <Game id="3">
         <name>Silent Hill</name>
         <genre>Survival Horor</genre>
+    </Game>
+    <Game id="4">
+        <name>Crash Bandicoot</name>
+        <genre>3D-Platform</genre>
     </Game>
 </Games>
