@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Games>
+    <Game>
+        <id>1</id>
+        <name>Kingdom Hearts</name>
+        <genre>Action-RPG</genre>
+    </Game>
+    <Game>
+        <id>2</id>
+        <name>Yoshi's Island</name>
+        <genre>2D-Platform</genre>
+    </Game>
+    <Game>
+        <id>3</id>
+        <name>Silent Hill</name>
+        <genre>Survival Horor</genre>
+    </Game>
+</Games>

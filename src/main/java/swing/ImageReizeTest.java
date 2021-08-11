@@ -55,8 +55,8 @@ public class ImageReizeTest {
             //++++++++++++++++++++++++++++++++++
             MImage.setOption(MImage.DRAW_CIRCLES);
             MImage.setColors(new Color[]{Color.RED, Color.BLUE});
-            Icon ii2 = MImage.resizeIcon(null, 20, 27);
-            lb.setIcon(ii2);
+            //Icon ii2 = MImage.resizeIcon(null, 20, 27);
+            //lb.setIcon(ii2);
             //++++++++++++++++++++++++++++++++++
             
             JP2.setBackground(Color.BLACK);

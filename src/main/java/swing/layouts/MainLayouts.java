@@ -30,7 +30,6 @@ import javax.swing.OverlayLayout;
 import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
 
-import amethods.MM;
 
 /**
  *
@@ -434,7 +433,7 @@ class MainLayouts {
             //JP.setLayout(new GridLayout(2, 5, 2, 2));
             jf.add(sc);
             jp.setLayout(new CardLayout(2, 2));
-            MM.setComponentFitOnJFrame(sc, jf);
+            //MM.setComponentFitOnJFrame(sc, jf);
             jp.setSize(sc.getSize());
 
             setPanelsLayouts();

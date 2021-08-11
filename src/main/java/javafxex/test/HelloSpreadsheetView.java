@@ -34,7 +34,7 @@ import org.controlsfx.control.spreadsheet.SpreadsheetCell;
 import org.controlsfx.control.spreadsheet.SpreadsheetCellBase;
 import org.controlsfx.control.spreadsheet.SpreadsheetCellType;
 import org.controlsfx.control.spreadsheet.SpreadsheetView;
-import org.controlsfx.dialog.Dialogs;
+//import org.controlsfx.dialog.Dialogs;
 import org.controlsfx.samples.HelloDecorator;
 import org.controlsfx.samples.Utils;
 
@@ -125,7 +125,8 @@ public class HelloSpreadsheetView extends ControlsFXSample {
      * information.
      */
     private void generatePickers() {
-        spreadSheetView.getRowPickers().addAll(0, 1, 2, 3, 4, 5, 6);
+        //spreadSheetView.getRowPickers().addAll(0, 1, 2, 3, 4, 5, 6);
+        /*
         spreadSheetView.setRowPickerCallback(new Callback<Integer, Void>() {
 
             @Override
@@ -170,6 +171,8 @@ public class HelloSpreadsheetView extends ControlsFXSample {
                 return null;
             }
         });
+        */
+        /*
         spreadSheetView.getColumnPickers().addAll(0);
         spreadSheetView.setColumnPickerCallback(new Callback<Integer, Void>() {
 
@@ -193,6 +196,7 @@ public class HelloSpreadsheetView extends ControlsFXSample {
                 return null;
             }
         });
+        */
     }
 
     /**

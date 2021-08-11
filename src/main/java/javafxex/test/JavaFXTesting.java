@@ -16,6 +16,7 @@ public class JavaFXTesting extends Application {
     @Override
     public void start(Stage stage) {
         System.out.println("\nSTART");
+        System.out.println("PATH TEST: " + JavaFXTesting.class.getResource("/javafxex/test/JavaFXTesting.fxml").toExternalForm());
         try {
             FXMLLoader loader = new FXMLLoader(JavaFXTesting.class.getResource("/javafxex/test/JavaFXTesting.fxml"));
 

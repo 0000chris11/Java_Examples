@@ -13,7 +13,9 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import amethods.MM;
+import com.cofii2.methods.MImage;
+
+//import amethods.MM;
 
 /**
  *
@@ -38,11 +40,11 @@ public class JTreeCellRenderer extends DefaultTreeCellRenderer {
             if (node.isLeaf()) {
                   if (node.getParent().equals(node.getRoot().getChildAt(1))) {
                         // System.out.println(node + " is a female");
-                        this.setLeafIcon(new ImageIcon(MM.resizeImage(heart, 30, 20)));
+                        //this.setLeafIcon(new ImageIcon(MImage.resizeIcon(heart.toString(), 30, 20)));
 
                   } else if (node.getParent().equals(node.getRoot().getChildAt(0))) {
                         System.out.println(node + " is a male");
-                        this.setLeafIcon(new ImageIcon(MM.resizeImage(note, 30, 20)));
+                        //this.setLeafIcon(new ImageIcon(MM.resizeImage(note, 30, 20)));
                   }
             }
             // +++++++++++++++++++++++++++++++++++++++++++
@@ -50,7 +52,7 @@ public class JTreeCellRenderer extends DefaultTreeCellRenderer {
             // +++++++++++++++++++++++++++++++++++++++++++
             if (node.getChildCount() > 0) {
                   // System.out.println("\nNON-LEAF");
-                  this.setIcon(new ImageIcon(MM.resizeImage(folder, 30, 20)));
+                  //this.setIcon(new ImageIcon(MM.resizeImage(folder, 30, 20)));
             }
             // System.out.println("sel: " + sel);
             // System.out.println("expanded: " + expanded);

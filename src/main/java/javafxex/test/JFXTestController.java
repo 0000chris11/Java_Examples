@@ -97,7 +97,7 @@ public class JFXTestController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //TEST 1--------------------------------------
-        tfPopup.setLvOriginalItems(items);
+        tfPopup.addAllItems(items);
         tf.setAlignment(Pos.TOP_CENTER);
         tfPopup.getLv().getSelectionModel().selectedItemProperty()
                 .addListener((obs, oldValue, newValue) -> lvPopupSelectedItemProperty(oldValue, newValue));
