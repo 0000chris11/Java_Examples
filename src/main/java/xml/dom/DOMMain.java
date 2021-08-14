@@ -19,7 +19,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import com.cofii2.xml.UpdateResourceXML;
+import com.cofii2.xml.ResourceXML;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -151,7 +151,7 @@ class DOMMain {
                 update(docBuilder, file);
             } else if(option.equals("testNewClass")){
                 System.out.println("testNewClass OPTION");
-                new UpdateResourceXML("/xml/dom/games.xml", this::updateTest);
+                new ResourceXML("/xml/dom/games.xml", ResourceXML.UPDATE_XML, this::updateTest);
             }
 
             //sc.close();
